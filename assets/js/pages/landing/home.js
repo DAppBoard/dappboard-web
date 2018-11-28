@@ -7,7 +7,7 @@ parasails.registerPage('landing-home', {
   },
 
   mounted:  function(){
-    console.log(Successfully mounted)
+    console.log("Successfully mounted")
   },
 
   methods: {

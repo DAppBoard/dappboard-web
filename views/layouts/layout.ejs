@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Sails App</title>
+    <title>DAppBoard</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -32,13 +32,17 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bulma.min.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
 
   <body>
+    <%- include('header'); %>
+
     <%- body %>
 
+    <%- include('footer'); %>
 
 
     <!--
@@ -63,7 +67,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 
@@ -112,6 +116,7 @@
     <script src="/dependencies/lodash.js"></script>
     <script src="/dependencies/vue.js"></script>
     <script src="/dependencies/parasails.js"></script>
+    <script src="/js/pages/landing/home.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
