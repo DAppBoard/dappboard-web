@@ -63,6 +63,11 @@ var jsFilesToInject = [
 
   // Load `sails.io` before everything else.
   'dependencies/sails.io.js',
+  'dependencies/jquery.js',
+  'dependencies/lodash.js',
+  'dependencies/vue.js',
+
+  'dependencies/parasails.js',
 
   // Bring in `.js` files for any other client-side JavaScript dependencies.
   // (e.g. Lodash, Vue.js, jQuery, Bootstrap, Ember, Angular, etc.)
