@@ -66,6 +66,7 @@ var jsFilesToInject = [
   'dependencies/jquery.js',
   'dependencies/lodash.js',
   'dependencies/vue.js',
+  'dependencies/vue-good-table.js',
 
   'dependencies/parasails.js',
 

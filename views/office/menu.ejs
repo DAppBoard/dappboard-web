@@ -1,0 +1,17 @@
+<aside class="menu">
+  <p class="menu-label">
+    General
+  </p>
+  <ul class="menu-list">
+    <li ><a class="<%= office.nav == 'home' ? 'is-active': '' %>">Dashboard</a></li>
+  </ul>
+  <p class="menu-label">
+    Tokens
+  </p>
+  <ul class="menu-list">
+    <li><a>All</a></li>
+    <li><a>ERC20</a></li>
+    <li><a>ERC721</a></li>
+    <%= office.nav == 'home' %>
+  </ul>
+</aside>
