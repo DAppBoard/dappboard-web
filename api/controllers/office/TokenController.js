@@ -1,11 +1,12 @@
 module.exports = {
 
   list: async function(req, res) {
-    return (res.view('office/home', {
-      office: {
-        nav: 'home',
-      }
-    }));
-  }
+    var results = await sails.helpers.tokens.list();
+    return (res.json(results));
+  },
+
+  update: async function(req, res) {
+    return (res.json(true));
+  },
 
 }
