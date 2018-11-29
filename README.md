@@ -1,6 +1,12 @@
-# dappboard-web
+# DAppBoard Web
 
 The [DAppBoard](http://dappboard.com) backend and frontend powered by [Sails](https://sailsjs.com).
+
+### Run
+
+You will first need to [install the DAppBoard  environment](https://github.com/DAppBoard/dappboard-environment).
+
+```sails lift```
 
 
 ### Sails Links
