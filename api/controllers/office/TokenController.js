@@ -1,7 +1,8 @@
 module.exports = {
 
   list: async function(req, res) {
-    var results = await sails.helpers.tokens.list();
+    console.log(req.query)
+    var results = await sails.helpers.tokens.list.with(req.query);
     return (res.json(results));
   },
 

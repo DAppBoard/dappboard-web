@@ -5,16 +5,56 @@ module.exports = {
   description: 'Return the list of the tokens.',
 
   inputs: {
+    'limit': {
+      type: 'number',
+      example: 10,
+      description: 'The nquery to execute.',
+      required: false,
+      defaultsTo: 10,
+    },
+    'page': {
+      type: 'number',
+      example: 2,
+      description: 'The nquery to execute.',
+      required: false,
+      defaultsTo: 0,
+    },
+    'ascending': {
+      type: 'number',
+      example: 2,
+      description: 'The nquery to execute.',
+      required: false,
+      defaultsTo: 0,
+    },
+    'query': {
+      type: {},
+      example: {},
+      description: 'The nquery to execute.',
+      required: false,
+      defaultsTo: {},
+    },
+    'byColumn': {
+      type: 'number',
+      example: 2,
+      description: 'The nquery to execute.',
+      required: false,
+      defaultsTo: 0,
+    }
   },
 
   fn: async function (inputs, exits) {
+    console.log(inputs)
     var knex = await sails.helpers.db.getknex();
-    var query = knex.select('*').from('tokens').toString();
-    var results = await sails.helpers.db.execute.with({'query': query});
-    var res = {};
-    res.tokens = results.rows;
-    res.tokensCount = results.rowCount;
-    return exits.success(res);
+    var base = knex.select('*').from('tokens');
+    for (var col in inputs.query) {
+      if (inputs.query.hasOwnProperty(col)) {
+        base = base.where(col, inputs.query[col])
+      }
+    }
+    var results = await base.paginate(inputs['limit'], inputs['page'], true);
+    results.count = results.total;
+    return exits.success(results);
+
   }
 
 };

@@ -1,8 +1,27 @@
-<div class="columns">
-  <div class="column is-3">
-    <%- include('menu'); %>
-  </div>
-  <div class="column is-9">
-    Tokens
+<div id="office-tokens">
+  <div class="columns">
+    <div class="column is-3">
+      <%- include('menu'); %>
+    </div>
+    <div class="column is-9">
+      <h1 class="title is-3">Tokens</h1>
+      <v-server-table url="/office/tokens/list" :columns="columns" :options="options">
+        <p slot="address" slot-scope="props">
+          <address_etherscan_link :address="props.row.address"></address_etherscan_link>
+        </p>
+        <p slot="is_erc20" slot-scope="props">
+          {{props.row.is_erc20}}
+        </p>
+        <p slot="is_erc721" slot-scope="props">
+          {{props.row.is_erc721}}
+        </p>
+        <template slot="child_row" scope="props">
+          <office_token_edit :address="props.row.address"
+          :name="props.row.name" :symbol="props.row.symbol"
+           :is_erc20="props.row.is_erc20" :is_erc721="props.row.is_erc721">
+          </office_token_edit>
+        </template>
+      </v-server-table>
+    </div>
   </div>
 </div>
