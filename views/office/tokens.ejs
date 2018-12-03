@@ -17,7 +17,7 @@
         </p>
         <template slot="child_row" scope="props">
           <office_token_edit :address="props.row.address"
-          :name="props.row.name" :symbol="props.row.symbol"
+          :name="props.row.name" :symbol="props.row.symbol" :decimals="props.row.decimals"
            :is_erc20="props.row.is_erc20" :is_erc721="props.row.is_erc721">
           </office_token_edit>
         </template>

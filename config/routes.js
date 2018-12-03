@@ -25,6 +25,7 @@ module.exports.routes = {
   '/office/tokens': 'office/PageController.tokens',
 
   '/office/tokens/list': 'office/TokenController.list',
+  'post /office/tokens/:address/update': 'office/TokenController.update',
 
 
   /***************************************************************************

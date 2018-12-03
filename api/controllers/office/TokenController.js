@@ -7,7 +7,9 @@ module.exports = {
   },
 
   update: async function(req, res) {
-    return (res.json(true));
+    console.log({"address": req.params['address'], token: req.body});
+    var results = await sails.helpers.tokens.update.with({"address": req.params['address'], data: req.body});
+    return (res.json(results));
   },
 
 }

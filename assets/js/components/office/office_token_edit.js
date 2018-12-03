@@ -4,16 +4,19 @@ parasails.registerComponent('office_token_edit', {
     'address',
     'name',
     'symbol',
+    'decimals',
     'is_erc20',
     'is_erc721'
   ],
 
   data: function (){
+    console.log(this.decimals)
     return {
       token: {
         address: this.address,
         name: this.name,
         symbol: this.symbol,
+        decimals: this.decimals,
         is_erc20: this.is_erc20,
         is_erc721: this.is_erc721,
       }
@@ -38,6 +41,12 @@ parasails.registerComponent('office_token_edit', {
       <label class="label">Symbol</label>
       <div class="control">
         <input class="input" v-model="token.symbol">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Decimals</label>
+      <div class="control">
+        <input class="input" v-model="token.decimals">
       </div>
     </div>
     <input type="checkbox" id="erc20" v-model="token.is_erc20">
@@ -67,6 +76,10 @@ parasails.registerComponent('office_token_edit', {
 
   methods: {
     submit: function() {
+      console.log("Will update", this.token)
+      $.post( "/office/tokens/" + this.address + "/update", this.token, function(data) {
+        console.log(data)
+      });
 
     }
 
