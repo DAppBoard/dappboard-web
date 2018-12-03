@@ -21,10 +21,10 @@ module.exports = {
     },
     'ascending': {
       type: 'number',
-      example: 2,
+      example: 0,
       description: 'The nquery to execute.',
       required: false,
-      defaultsTo: 0,
+      defaultsTo: 1,
     },
     'query': {
       type: {},
@@ -39,7 +39,15 @@ module.exports = {
       description: 'The nquery to execute.',
       required: false,
       defaultsTo: 0,
+    },
+    'orderBy': {
+      type: 'string',
+      example: 'name',
+      description: 'The nquery to execute.',
+      required: false,
+      defaultsTo: '',
     }
+
   },
 
   fn: async function (inputs, exits) {
@@ -51,6 +59,10 @@ module.exports = {
         base = base.where(col, inputs.query[col])
       }
     }
+    if (inputs.orderBy != '') {
+      base.orderByRaw(inputs.orderBy  + " " + ( inputs.ascending == 1 ? 'asc' : 'desc'));
+    }
+    console.log(base.toString())
     var results = await base.paginate(inputs['limit'], inputs['page'], true);
     results.count = results.total;
     return exits.success(results);

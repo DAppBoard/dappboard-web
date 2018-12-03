@@ -19,10 +19,10 @@ parasails.registerPage('office-tokens', {
         edge: true,
       },
       sortIcon: {
-        base: 'fas fa-home',
-        up: 'glyphicon-chevron-up',
-        down: 'glyphicon-chevron-down',
-        is: 'glyphicon-sort'
+        base: 'fas',
+        up: 'fa-chevron-up',
+        down: 'fa-chevron-down',
+        is: 'fa-sort'
       }
     },
   },
