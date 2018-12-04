@@ -2,6 +2,8 @@
 
 The [DAppBoard](http://dappboard.com) backend and frontend powered by [Sails](https://sailsjs.com).
 
+You are lost? [Check the documentation on how to run your own DAppBoard!](https://github.com/DAppBoard/dappboard-documentation)
+
 ### Run
 
 You will first need to [install the DAppBoard  environment](https://github.com/DAppBoard/dappboard-environment).
