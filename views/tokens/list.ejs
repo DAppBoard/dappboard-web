@@ -1,1 +1,16 @@
-<h1>List of tokens</h1>
+<div id="tokens-list" currentPeriod="dfksdfjfdsh">
+  <h1>List of tokens</h1>
+  <v-server-table url="/api/tokens/list" :columns="columns" :options="options">
+    <p slot="transfer_count_<%= currentPeriod %>" slot-scope="props">
+      {{props.row['transfer_count_' + currentPeriod]}}
+    </p>
+    <p slot="receiver_count_<%= currentPeriod %>" slot-scope="props">
+      {{props.row['receiver_count_' + currentPeriod]}}
+    </p>
+    <p slot="sender_count_<%= currentPeriod %>" slot-scope="props">
+      {{props.row['sender_count_' + currentPeriod]}}
+    </p>
+  </v-server-table>
+</office_token_edit>
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
