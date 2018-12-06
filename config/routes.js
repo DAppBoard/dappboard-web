@@ -27,17 +27,11 @@ module.exports.routes = {
   '/office/tokens/list': 'office/TokenController.list',
   'post /office/tokens/:address/update': 'office/TokenController.update',
 
+  //tokens
+  '/tokens': 'tokens/TokenController.tokens',
+  '/nfts': 'tokens/TokenController.nfts',
 
-  /***************************************************************************
-  *                                                                          *
-  * More custom routes here...                                               *
-  * (See https://sailsjs.com/config/routes for examples.)                    *
-  *                                                                          *
-  * If a request to a URL doesn't match any of the routes in this file, it   *
-  * is matched against "shadow routes" (e.g. blueprint routes).  If it does  *
-  * not match any of those, it is matched against static assets.             *
-  *                                                                          *
-  ***************************************************************************/
-
+  // PUBLIC API
+  '/api/tokens/list': 'tokens/TokenController.list',
 
 };
