@@ -1,7 +1,11 @@
 parasails.registerPage('tokens-list', {
   data: {
     columns: [
-
+      'name',
+      'transfers',
+      'transfers_today',
+      'receivers_today',
+      'senders_today'
     ],
     options: {
       filterByColumn: true,
@@ -12,7 +16,6 @@ parasails.registerPage('tokens-list', {
       pagination: {
         edge: true,
       },
-      currentPeriod: null,
       sortIcon: {
         base: 'fas',
         up: 'fa-chevron-up',
@@ -24,7 +27,6 @@ parasails.registerPage('tokens-list', {
   props: ['currentPeriod'],
 
   beforeMount: function() {
-    this.currentPeriod = window.SAILS_LOCALS.currentPeriod;
     console.log('before monted')
     console.log(this)
     console.log(window)
@@ -33,12 +35,7 @@ parasails.registerPage('tokens-list', {
 
   mounted: function() {
     console.log("Successfully mounted")
-    var ctx = this;
-    this.columns.push('name')
-    this.columns.push('symbol')
-    this.columns.push('transfer_count_' + this.currentPeriod)
-    this.columns.push('receiver_count_' + this.currentPeriod)
-    this.columns.push('sender_count_' + this.currentPeriod)
+
   },
 
   methods: {

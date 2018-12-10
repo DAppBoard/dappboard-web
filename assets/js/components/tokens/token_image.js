@@ -3,6 +3,7 @@ parasails.registerComponent('token_image', {
   props: [
     'address',
     'name',
+    'symbol',
     'size'
   ],
 
@@ -13,11 +14,19 @@ parasails.registerComponent('token_image', {
   },
 
   template: `
-  <div>
+  <div style=" display: flex;
+   align-items:center;">
+    <div style="margin-left: 10px; margin-right: 10px;" >
     <img v-show="loaded" @load="load" :src="address | getAddress" class="token_image" v-bind:style="{ width: size + 'px', height: size + 'px', backgroundColor: 'transparent' }">
     </img>
     <img v-show="!loaded"  src="/images/token_placeholder.png" class="token_image" v-bind:style="{ width: size + 'px', height: size + 'px', backgroundColor: 'transparent' }">
     </img>
+    </div>
+    <div style="display: inline;" >
+      <div>
+     <strong>{{ name }}</strong> - {{symbol}}
+     </div>
+    </div>
   </div>
   `,
 

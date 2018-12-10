@@ -2,16 +2,10 @@
   <h1>List of tokens</h1>
   <v-server-table url="/api/tokens/list" :columns="columns" :options="options">
     <p slot="name" slot-scope="props">
-      <token_image :size="50" :name="props.row.name" :symbol="props.row.symbol" :address="props.row.token_address"></token_image>{{ props.row.name }}
+      <token_image :size="50" :name="props.row.name" :symbol="props.row.symbol" :address="props.row.address"></token_image>
     </p>
-    <p slot="transfer_count_<%= currentPeriod %>" slot-scope="props">
-      {{props.row['transfer_count_' + currentPeriod]}}
-    </p>
-    <p slot="receiver_count_<%= currentPeriod %>" slot-scope="props">
-      {{props.row['receiver_count_' + currentPeriod]}}
-    </p>
-    <p slot="sender_count_<%= currentPeriod %>" slot-scope="props">
-      {{props.row['sender_count_' + currentPeriod]}}
+    <p slot="transfers" slot-scope="props">
+      <general_trend_line data_key="transfers" :data="props.row.item"></general_trend_line>
     </p>
   </v-server-table>
 </office_token_edit>
