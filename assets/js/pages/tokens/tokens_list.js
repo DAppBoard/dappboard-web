@@ -8,7 +8,6 @@ parasails.registerPage('tokens-list', {
       'senders_today'
     ],
     options: {
-      filterByColumn: true,
       uniqueKey: 'address',
       perPageValues: [25, 50, 100, 500, 1000],
       perPage: 25,
@@ -21,7 +20,14 @@ parasails.registerPage('tokens-list', {
         up: 'fa-chevron-up',
         down: 'fa-chevron-down',
         is: 'fa-sort'
-      }
+      },
+      headings: {
+         name: 'Token',
+       },
+       headingsTooltips: {
+         name: "Token",
+       },
+
     },
   },
   props: ['currentPeriod'],

@@ -26,13 +26,6 @@ module.exports = {
       required: false,
       defaultsTo: 1,
     },
-    'query': {
-      type: {},
-      example: {},
-      description: 'The nquery to execute.',
-      required: false,
-      defaultsTo: {},
-    },
     'byColumn': {
       type: 'number',
       example: 2,
