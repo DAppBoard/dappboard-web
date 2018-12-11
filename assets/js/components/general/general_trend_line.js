@@ -19,7 +19,7 @@ parasails.registerComponent('general_trend_line', {
   :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
   auto-draw
   smooth
-  style="width:300px;">
+  style=" height: 40px;">
   </trend>
   </div>
   `,

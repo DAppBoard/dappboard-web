@@ -23,9 +23,19 @@ parasails.registerPage('tokens-list', {
       },
       headings: {
          name: 'Token',
+         transfers: 'Transfers (Week)',
+         transfers_today: 'Transfers (Today)',
+         receivers_today: 'Token receivers (Today)',
+         senders_today: 'Token senders (Today)',
+
        },
        headingsTooltips: {
-         name: "Token",
+         name: TOOLTIPS.token,
+         transfers: TOOLTIPS.token_transfer_count,
+         transfers_today: TOOLTIPS.token_transfer_count,
+         receivers_today: TOOLTIPS.token_transfer_receiver_count,
+         senders_today: TOOLTIPS.token_transfer_sender_count,
+
        },
 
     },
