@@ -15,6 +15,10 @@ parasails.registerPage('tokens-list', {
       pagination: {
         edge: true,
       },
+      orderBy: {
+        ascending: false,
+        column: 'transfers',
+      },
       sortIcon: {
         base: 'fas',
         up: 'fa-chevron-up',

@@ -1,10 +1,8 @@
-parasails.registerComponent('token_image', {
+parasails.registerComponent('contracts_image', {
 
   props: [
     'address',
     'name',
-    'symbol',
-    'size'
   ],
 
   data: function() {

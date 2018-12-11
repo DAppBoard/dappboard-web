@@ -30,6 +30,7 @@ module.exports.routes = {
   //tokens
   '/tokens': 'tokens/TokenController.tokens',
   '/nfts': 'tokens/TokenController.nfts',
+  '/contract/:address/token': 'contracts/TokenController.index',
 
   // PUBLIC API
   '/api/tokens/list': 'tokens/TokenController.list',
