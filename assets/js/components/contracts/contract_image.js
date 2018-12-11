@@ -1,8 +1,9 @@
-parasails.registerComponent('contracts_image', {
+parasails.registerComponent('contract_image', {
 
   props: [
     'address',
     'name',
+    'tags',
   ],
 
   data: function() {
@@ -12,24 +13,30 @@ parasails.registerComponent('contracts_image', {
   },
 
   template: `
-  <a :href="address | contractAddress" style=" display: flex;
-   align-items:center;">
+  <center>
+  <a :href="address | contractAddress" style=" ">
+
     <div style="margin-left: 10px; margin-right: 10px;" >
-    <img v-show="loaded" @load="load" :src="address | getAddress" class="token_image" v-bind:style="{ width: size + 'px', height: size + 'px', backgroundColor: 'transparent' }">
+    <img v-show="loaded" @load="load" :src="address | getAddress" class="token_image" style="width: 20%; height: 20%; backgroundColor: transparent;">
     </img>
-    <img v-show="!loaded"  src="/images/token_placeholder.png" class="token_image" v-bind:style="{ width: size + 'px', height: size + 'px', backgroundColor: 'transparent' }">
+    <img v-show="!loaded"  src="/images/token_placeholder.png" class="token_image" style="width: 20%; height: 20%; backgroundColor: transparent;">
     </img>
     </div>
-    <div style="display: inline;" >
+    <div style="" >
       <div>
-     <strong>{{ name }}</strong> - {{symbol}}
+     <strong>{{ name }}</strong>
      </div>
+     </a>
+     <div class="" style="margin-top: 10px;">
+     <span style="margin:2px;" class="tag is-light" v-for="item in tags">
+      {{ item }}
+      </span>
+      </div>
     </div>
-  </a>
+    </center>
   `,
 
   beforeMount: function() {
-
   },
   mounted: async function() {
 

@@ -1,7 +1,8 @@
 <aside class="menu">
-  <p class="menu-label">
-
-  </p>
+<div style="margin-top: 20px;">
+    <contract_image address="<%= contracts.contract.address %>" :tags="<%= JSON.stringify(contracts.contract.tags) %>" name="<%= contracts.contract.name %>"></contract_image>
+</div>
+    <hr>
   <ul class="menu-list">
     <li ><a class="<%= contracts.nav == 'home' ? 'is-active': '' %>">Dashboard</a></li>
     <li ><a class="<%= contracts.nav == 'token' ? 'is-active': '' %>">Token</a></li>
