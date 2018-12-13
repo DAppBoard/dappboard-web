@@ -8,6 +8,9 @@ HELPERS = {
       }
     }
     var i = 0;
+    while (i < obj.length && moment(startDate).format("YYYY-MM-DD") > moment(obj[i].day).format("YYYY-MM-DD")) {
+      i++;
+    }
     for (var m = moment(startDate); m.diff(endDate, 'days') <= 0; m.add(1, 'days')) {
       if (i < obj.length && moment(m).format("YYYY-MM-DD") == moment(obj[i].day).format("YYYY-MM-DD"))
       {

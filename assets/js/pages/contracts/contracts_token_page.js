@@ -4,6 +4,8 @@ parasails.registerPage('contracts-token-page', {
     columns: [],
     chart: {},
     chartHeight: 270,
+    startDate: moment().subtract(7, 'days'),
+    endDate: moment().subtract(1, 'days'),
   },
 
   beforeMount: function() {
@@ -19,17 +21,23 @@ parasails.registerPage('contracts-token-page', {
         "autoApply": true,
 
     ranges: {
-        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-        'Last 90 Days': [moment().subtract(90, 'days'), moment()],
+        'Last 7 Days': [moment().subtract(7, 'days'), moment().subtract(1, 'days')],
+        'Last 30 Days': [moment().subtract(30, 'days'), moment().subtract(1, 'days')],
+        'Last 90 Days': [moment().subtract(90, 'days'), moment().subtract(1, 'days')],
         'This Month': [moment().startOf('month'), moment().endOf('month')],
         'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
     },
     "alwaysShowCalendars": true,
+    "startDate":this.startDate,
+    "endDate": this.endDate,
 
 }, function(start, end, label) {
-  ctx.refreshGraph();
   console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+  console.log(start, end, label)
+  ctx.startDate = start;
+  ctx.endDate = end;
+  ctx.refreshGraph();
+
 });
   },
 
@@ -40,10 +48,11 @@ parasails.registerPage('contracts-token-page', {
       console.log(SAILS_LOCALS)
       $.get('/api/tokens/' + 'c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' + '/daily', function(res) {
         console.log(res)
+        console.log(res)
         while (ctx.columns.length > 0) {
           ctx.columns.pop();
         }
-        var results = HELPERS.normalizeTimeSerie("2018-10-06", "2018-12-12", res);
+        var results = HELPERS.normalizeTimeSerie(ctx.startDate, ctx.endDate, res);
         console.log(results)
         for (k in results) {
           console.log(k)
