@@ -6,3 +6,11 @@
 .general_value_negative {
   color: red;
 }
+
+.general_background_normal {
+  background-color: #ECEFF3;
+}
+
+.general_background_secondary {
+  background-color: #BBDDFC;
+}

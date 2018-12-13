@@ -24,4 +24,10 @@ module.exports = {
     return (res.json(results));
   },
 
+  daily: async function(req, res) {
+    console.log(req.params)
+    var results = await sails.helpers.tokens.dailyVolume.with({"address": req.params['token']});
+    return (res.json(results));
+  },
+
 }

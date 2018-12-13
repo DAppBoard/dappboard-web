@@ -34,5 +34,6 @@ module.exports.routes = {
 
   // PUBLIC API
   '/api/tokens/list': 'tokens/TokenController.list',
+  '/api/tokens/:token/daily': 'tokens/TokenController.daily',
 
 };
