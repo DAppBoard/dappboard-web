@@ -14,24 +14,23 @@ parasails.registerComponent('contract_image', {
 
   template: `
   <center>
-  <a :href="address | contractAddress" style=" ">
-
+    <a :href="address | contractAddress" style=" ">
     <div style="margin-left: 10px; margin-right: 10px;" >
-    <img v-show="loaded" @load="load" :src="address | getAddress" class="token_image" style="width: 20%; height: 20%; backgroundColor: transparent;">
-    </img>
-    <img v-show="!loaded"  src="/images/token_placeholder.png" class="token_image" style="width: 20%; height: 20%; backgroundColor: transparent;">
-    </img>
+      <img v-show="loaded" @load="load" :src="address | getAddress" class="token_image" style="width: 20%; height: 20%; backgroundColor: transparent;">
+      </img>
+      <img v-show="!loaded"  src="/images/token_placeholder.png" class="token_image" style="width: 20%; height: 20%; backgroundColor: transparent;">
+      </img>
     </div>
     <div style="" >
       <div>
-     <strong>{{ name }}</strong>
-     </div>
-     </a>
-     <div class="" style="margin-top: 10px;">
+        <strong>{{ name }}</strong>
+      </div>
+    </div>
+    </a>
+      <div class="" style="margin-top: 10px;">
      <span style="margin:2px;" class="tag is-light" v-for="item in tags">
       {{ item }}
       </span>
-      </div>
     </div>
     </center>
   `,

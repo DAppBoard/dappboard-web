@@ -65,13 +65,13 @@ var jsFilesToInject = [
   'dependencies/sails.io.js',
   'dependencies/jquery.js',
   'dependencies/lodash.js',
+  'dependencies/moment.js',
   'dependencies/d3.js',
   'dependencies/c3.js',
 
   'dependencies/vue.js',
   'dependencies/vue-table.js',
   'dependencies/vue-trend.js',
-  'dependencies/vue-c3.js',
 
   'dependencies/parasails.js',
 

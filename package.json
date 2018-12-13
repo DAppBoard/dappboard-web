@@ -16,7 +16,8 @@
     "sails": "^1.1.0",
     "sails-hook-grunt": "^3.1.0",
     "sails-hook-orm": "^2.1.1",
-    "sails-hook-sockets": "^1.5.5"
+    "sails-hook-sockets": "^1.5.5",
+    "vue-c3": "^1.2.11"
   },
   "devDependencies": {
     "@sailshq/eslint": "^4.19.3"
