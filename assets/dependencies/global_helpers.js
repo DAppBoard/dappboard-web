@@ -4,7 +4,7 @@ HELPERS = {
     var results = {};
     for (var key in obj[0]) {
       if (obj[0].hasOwnProperty(key)) {
-        results[key] = [key];
+        results[key] = [];
       }
     }
     var i = 0;

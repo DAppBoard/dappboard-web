@@ -6,6 +6,9 @@ parasails.registerPage('contracts-token-page', {
     chartHeight: 270,
     startDate: moment().subtract(7, 'days'),
     endDate: moment().subtract(1, 'days'),
+    c_holders: null,
+    c_volume: null,
+    c_transfers: null,
   },
 
   beforeMount: function() {
@@ -15,114 +18,171 @@ parasails.registerPage('contracts-token-page', {
   mounted: function() {
     console.log("Successfully mounted");
     this.refreshGraph();
-    var ctx = this;
+    var ctxo = this;
     $('#tokendaterange').daterangepicker({
-        "opens": "left",
-        "autoApply": true,
-
-    ranges: {
+      "opens": "left",
+      //"autoApply": true,
+      ranges: {
         'Last 7 Days': [moment().subtract(7, 'days'), moment().subtract(1, 'days')],
         'Last 30 Days': [moment().subtract(30, 'days'), moment().subtract(1, 'days')],
         'Last 90 Days': [moment().subtract(90, 'days'), moment().subtract(1, 'days')],
-        'This Month': [moment().startOf('month'), moment().endOf('month')],
-        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    },
-    "alwaysShowCalendars": true,
-    "startDate":this.startDate,
-    "endDate": this.endDate,
+      },
+      "alwaysShowCalendars": true,
+      "startDate": ctxo.startDate,
+      "endDate": ctxo.endDate,
 
-}, function(start, end, label) {
-  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-  console.log(start, end, label)
-  ctx.startDate = start;
-  ctx.endDate = end;
-  ctx.refreshGraph();
+    }, function(start, end, label) {
 
-});
+      ctxo.startDate = start;
+      ctxo.endDate = end;
+      ctxo.refreshGraph();
+
+    });
   },
 
   methods: {
     refreshGraph: function() {
       var ctx = this;
-      console.log(this)
-      console.log(SAILS_LOCALS)
-      $.get('/api/tokens/' + 'c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' + '/daily', function(res) {
-        console.log(res)
-        console.log(res)
+      $.get('/api/tokens/' + SAILS_LOCALS.contracts.contract.address + '/daily', function(res) {
+        console.log(ctx);
         while (ctx.columns.length > 0) {
           ctx.columns.pop();
         }
         var results = HELPERS.normalizeTimeSerie(ctx.startDate, ctx.endDate, res);
-        console.log(results)
         for (k in results) {
-          console.log(k)
           ctx.columns.push(results[k]);
         }
-        console.log(ctx.columns)
-        var chart = c3.generate({
-          bindto: '#token_chart',
-          data: {
-            x: 'day',
-            columns: [ results.transfers, results.day]
+        if (ctx.c_volume != null) {
+          ctx.c_volume.destroy();
+        }
+        if (ctx.c_holders != null) {
+          ctx.c_holders.destroy();
+        }
+        if (ctx.c_transfers != null) {
+          ctx.c_transfers.destroy();
+        }
+        var c1 = $('#token_chart_transfers')[0].getContext('2d');
+        var c2 = $('#token_chart_holders')[0].getContext('2d');
+        var c3 = $('#token_chart_volume')[0].getContext('2d');
+
+        var options = {
+          tooltips: {
+            mode: 'index',
+            intersect: false,
           },
-        size: {
-          height: ctx.chartHeight,
-        },
-          axis: {
-            x: {
-              type: 'timeseries',
-              // if true, treat x value as localtime (Default)
-              // if false, convert to UTC internally
-              localtime: false,
-            }
-          }
+        }
+        ctx.c_transfers = new Chart(c1, {
+          // The type of chart we want to create
+          type: 'line',
+
+          // The data for our dataset
+          data: {
+            labels: results.day,
+            datasets: [{
+              label: "Count of transfers",
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgb(255, 99, 132)',
+              data: results.transfers,
+            }]
+          },
+
+          // Configuration options go here
+          options: options
         });
 
-        var chart = c3.generate({
-          bindto: '#token_chart2',
+        ctx.c_holders = new Chart(c2, {
+          // The type of chart we want to create
+          type: 'line',
+
+          // The data for our dataset
           data: {
-            x: 'day',
-            columns: [ results.receivers, results.senders, results.day]
+            labels: results.day,
+            datasets: [{
+                label: "Senders",
+                backgroundColor: 'rgba(99, 255, 132, 0)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: results.senders,
+              },
+              {
+                label: "Receivers",
+                backgroundColor: 'rgba(99, 255, 132, 0)',
+                borderColor: 'rgb(99, 255, 132)',
+                data: results.receivers,
+              }
+            ]
           },
-          size: {
-            height: ctx.chartHeight,
-          },
-          axis: {
-            x: {
-              type: 'timeseries',
-              // if true, treat x value as localtime (Default)
-              // if false, convert to UTC internally
-              localtime: false,
-            }
-          }
+
+          // Configuration options go here
+          options: options
         });
 
-        var cl = [];
         if (SAILS_LOCALS.contracts.contract.is_erc20) {
-          cl.push(results.erc20_volume, results.erc20_average)
+          options.scales = {
+						yAxes: [{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'left',
+							id: 'y-axis-1',
+						}, {
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'right',
+							id: 'y-axis-2',
+							gridLines: {
+								drawOnChartArea: false
+							}
+						}],
+					}
+          ctx.c_volume = new Chart(c3, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+              labels: results.day,
+              datasets: [{
+                label: "Total volume",
+                backgroundColor: 'rgba(99, 255, 132, 0)',
+                borderColor: 'rgb(255, 99, 132)',
+                yAxisID: 'y-axis-1',
+                data: results.erc20_volume,
+              },
+              {
+                label: "Average size of a transfer",
+                backgroundColor: 'rgba(99, 255, 132, 0)',
+                borderColor: 'rgb(99, 255, 132)',
+                yAxisID: 'y-axis-2',
+                data: results.erc20_average,
+              }]
+            },
+
+            // Configuration options go here
+            options: options
+          });
+
+
         }
         if (SAILS_LOCALS.contracts.contract.is_erc721) {
-          cl.push(results.nft_distincts)
+          ctx.c_volume = new Chart(c3, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+              labels: results.day,
+              datasets: [{
+                label: "Total volume",
+                backgroundColor: 'rgba(99, 255, 132, 0)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: results.nft_distincts,
+              }]
+            },
+
+            // Configuration options go here
+            options: options
+          });
         }
-        cl.push(results.day)
-        console.log(cl)
-        var chart = c3.generate({
-          bindto: '#token_chart3',
-          data: {
-            x: 'day',
-            columns: cl,
-          },
-          size: {
-            height: ctx.chartHeight,
-          },          axis: {
-            x: {
-              type: 'timeseries',
-              // if true, treat x value as localtime (Default)
-              // if false, convert to UTC internally
-              localtime: false,
-            }
-          }
-        });
+
       })
     }
 

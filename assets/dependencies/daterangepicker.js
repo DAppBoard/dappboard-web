@@ -1161,12 +1161,13 @@
         },
 
         clickRange: function(e) {
-            var label = e.target.getAttribute('data-range-key');
+            var label = e.currentTarget.getAttribute('data-range-key');
             this.chosenLabel = label;
             if (label == this.locale.customRangeLabel) {
                 this.showCalendars();
-            } else {
+            } else  {
                 var dates = this.ranges[label];
+
                 this.startDate = dates[0];
                 this.endDate = dates[1];
 
