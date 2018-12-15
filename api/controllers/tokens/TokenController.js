@@ -5,7 +5,7 @@ module.exports = {
       nav: {
         name: 'tokens',
       },
-      currentPeriod: '7d',
+      token_type: 'erc20',
     }));
   },
 
@@ -14,18 +14,25 @@ module.exports = {
       nav: {
         name: 'nfts',
       },
-      currentPeriod: '7d',
+      token_type: 'erc721',
     }));
   },
 
   list: async function(req, res) {
-    console.log(req.query)
+    if (req.query.query == "" || req.query.query == null) {
+      req.query.query = {};
+    }
+    if (req.param('type', "") == "erc20") {
+      req.query.query.is_erc20 = 'true'
+    }
+    if (req.param('type', "") == "erc721") {
+      req.query.query.is_erc721 = 'true'
+    }
     var results = await sails.helpers.tokens.listSummary.with(req.query);
     return (res.json(results));
   },
 
   daily: async function(req, res) {
-    console.log(req.params)
     var results = await sails.helpers.tokens.dailyVolume.with({"address": req.params['token']});
     return (res.json(results));
   },

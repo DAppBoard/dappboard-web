@@ -19,6 +19,13 @@ module.exports = {
       required: false,
       defaultsTo: 0,
     },
+    'query': {
+      type: {},
+      example: {},
+      description: 'The nquery to execute.',
+      required: false,
+      defaultsTo: {},
+    },
     'ascending': {
       type: 'number',
       example: 0,
@@ -49,7 +56,7 @@ module.exports = {
     var base = knex.select('*').from('token_transfers_summary');
     for (var col in inputs.query) {
       if (inputs.query.hasOwnProperty(col)) {
-        base = base.where(col, inputs.query[col])
+        base.where(col, inputs.query[col])
       }
     }
     if (inputs.orderBy != '') {

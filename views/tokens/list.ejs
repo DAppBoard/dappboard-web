@@ -1,6 +1,6 @@
 <div id="tokens-list" >
   <h1>List of tokens</h1>
-  <v-server-table url="/api/tokens/list" :columns="columns" :options="options">
+  <v-server-table url="/api/tokens/list/<%= token_type %>" :columns="columns" :options="options">
     <p slot="name" slot-scope="props" class="table_center_title">
       <token_image :size="50" :name="props.row.name" :symbol="props.row.symbol" :address="props.row.address"></token_image>
     </p>

@@ -33,6 +33,7 @@ module.exports.routes = {
   '/contract/:address/token': 'contracts/TokenController.index',
 
   // PUBLIC API
+  '/api/tokens/list/:type': 'tokens/TokenController.list',
   '/api/tokens/list': 'tokens/TokenController.list',
   '/api/tokens/:token/daily': 'tokens/TokenController.daily',
 

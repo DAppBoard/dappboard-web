@@ -8,9 +8,10 @@ parasails.registerPage('tokens-list', {
       'senders_today'
     ],
     options: {
+      filterable: false,
       uniqueKey: 'address',
-      perPageValues: [25, 50, 100, 500, 1000],
-      perPage: 25,
+      perPageValues: [15, 25, 50, 100, 500],
+      perPage: 15,
       saveState: true,
       pagination: {
         edge: true,
