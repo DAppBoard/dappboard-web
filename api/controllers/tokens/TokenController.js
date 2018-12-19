@@ -37,4 +37,13 @@ module.exports = {
     return (res.json(results));
   },
 
+  users: async function(req, res) {
+    if (req.query.query == "" || req.query.query == null) {
+      req.query.query = {};
+    }
+    req.query.address = req.param('token');
+    var results = await sails.helpers.tokens.listUsers.with(req.query);
+    return (res.json(results));
+  },
+
 }

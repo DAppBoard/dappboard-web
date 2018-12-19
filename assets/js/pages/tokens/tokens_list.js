@@ -45,7 +45,7 @@ parasails.registerPage('tokens-list', {
 
     },
   },
-  props: ['currentPeriod'],
+  props: [],
 
   beforeMount: function() {
     console.log('before monted')

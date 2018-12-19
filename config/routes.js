@@ -30,11 +30,15 @@ module.exports.routes = {
   //tokens
   '/tokens': 'tokens/TokenController.tokens',
   '/nfts': 'tokens/TokenController.nfts',
+  '/contract/:address/token/users': 'contracts/TokenController.users',
+  '/contract/:address/token/history': 'contracts/TokenController.history',
   '/contract/:address/token': 'contracts/TokenController.index',
 
   // PUBLIC API
   '/api/tokens/list/:type': 'tokens/TokenController.list',
   '/api/tokens/list': 'tokens/TokenController.list',
   '/api/tokens/:token/daily': 'tokens/TokenController.daily',
+  '/api/tokens/:token/users': 'tokens/TokenController.users',
+
 
 };
