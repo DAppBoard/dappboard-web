@@ -1,4 +1,6 @@
-<div id="tokens-list" >
+<div id="tokens-list" style="background-color: #EBEBEB; padding: 50px;" >
+  <div class="box" style="">
+
   <h1>List of tokens</h1>
   <v-server-table url="/api/tokens/list/<%= token_type %>" :columns="columns" :options="options">
     <p slot="name" slot-scope="props" class="table_center_title">
@@ -18,7 +20,7 @@
       <strong>{{ props.row.senders_today.toLocaleString() }}</strong>
     </center>
   </v-server-table>
-</office_token_edit>
+</div>
 </div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
 

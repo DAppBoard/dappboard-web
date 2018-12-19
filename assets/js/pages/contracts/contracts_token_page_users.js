@@ -73,30 +73,39 @@ parasails.registerPage('contracts-token-page-users', {
   },
 
   methods: {
-    onLoaded: function(data) {
-      console.log(data)
+    onLoaded: function(d) {
+      console.log(d)
       console.log(this)
       var data = [];
-
+      var labels = [];
+      var total_left = parseInt(d.total)
+      for (user of d.data) {
+        data.push(user.transfers)
+        labels.push(user.address)
+        total_left -= parseInt(user.transfers)
+      }
+      data.push(total_left);
+      labels.push('Others')
       var c1 = $('#chart_users')[0].getContext('2d');
       var ctxo = this;
+      if (ctxo.c_users.destroy != null) {
+        ctxo.c_users.destroy()
+      }
       ctxo.c_users = new Chart(c1, {
         // The type of chart we want to create
-        type: 'line',
+        type: 'doughnut',
 
         // The data for our dataset
         data: {
-          labels: results.day,
+          labels: labels,
           datasets: [{
             label: "Count of transfers",
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: results.transfers,
+            data: data,
           }]
         },
 
         // Configuration options go here
-        options: options
+      //  options: options
       });
 
     }
