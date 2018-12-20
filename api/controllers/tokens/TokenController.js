@@ -1,6 +1,6 @@
 module.exports = {
 
-  tokens: async function(req, res) {
+  list_tokens: async function(req, res) {
     return (res.view('tokens/list', {
       nav: {
         name: 'tokens',
@@ -9,7 +9,7 @@ module.exports = {
     }));
   },
 
-  nfts: async function(req, res) {
+  list_nfts: async function(req, res) {
     return (res.view('tokens/list', {
       nav: {
         name: 'nfts',
@@ -43,6 +43,15 @@ module.exports = {
     }
     req.query.address = req.param('token');
     var results = await sails.helpers.tokens.listUsers.with(req.query);
+    return (res.json(results));
+  },
+
+  nfts: async function(req, res) {
+    if (req.query.query == "" || req.query.query == null) {
+      req.query.query = {};
+    }
+    req.query.address = req.param('token');
+    var results = await sails.helpers.tokens.listNfts.with(req.query);
     return (res.json(results));
   },
 
