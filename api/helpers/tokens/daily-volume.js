@@ -18,7 +18,6 @@ module.exports = {
     console.log(inputs)
     var knex = await sails.helpers.db.getknex();
     var base = knex.select('*').from('token_transfers_daily').where('token_address', inputs.address).orderBy('day', 'ASC');
-    console.log(base.toString())
     var res = await sails.helpers.db.execute(base.toString());
     return exits.success(res.rows);
   }

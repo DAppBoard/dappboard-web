@@ -5,7 +5,7 @@ parasails.registerPage('contracts-token-page-nfts', {
     endDate: moment().subtract(1, 'days'),
     c_users: {},
     columns: [
-      'address',
+      'nft',
       'transfers',
     ],
     options: {
@@ -32,7 +32,7 @@ parasails.registerPage('contracts-token-page-nfts', {
         is: 'fa-sort'
       },
       headings: {
-        address: 'Address',
+        nft: 'Collectible',
         transfers: 'Number of transfers',
 
       },
