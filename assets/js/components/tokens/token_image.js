@@ -4,7 +4,7 @@ parasails.registerComponent('token_image', {
     'address',
     'name',
     'symbol',
-    'size'
+    'size',
   ],
 
   data: function() {
@@ -14,7 +14,7 @@ parasails.registerComponent('token_image', {
   },
 
   template: `
-  <a :href="address | contractAddress" style=" display: flex;
+  <a :href="address | contractAddress" style="display: flex;
    align-items:center;">
     <div style="margin-left: 10px; margin-right: 10px;" >
     <img v-show="loaded" @load="load" :src="address | getAddress" class="token_image" v-bind:style="{ width: size + 'px', height: size + 'px', backgroundColor: 'transparent' }">

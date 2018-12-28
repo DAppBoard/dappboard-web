@@ -74,14 +74,15 @@ parasails.registerPage('contracts-token-page-nfts', {
 
   methods: {
     onLoaded: function(d) {
-      console.log(d)
-      console.log(this)
       var data = [];
       var labels = [];
+      var backgroundColors = [];
+      var colorHash = new ColorHash();
       var total_left = parseInt(d.total)
       for (nft of d.data) {
         data.push(nft.transfers)
         labels.push(nft.nft)
+        backgroundColors.push(colorHash.hex(nft.nft))
         total_left -= parseInt(nft.transfers)
       }
       data.push(total_left);
@@ -101,6 +102,7 @@ parasails.registerPage('contracts-token-page-nfts', {
           datasets: [{
             label: "Count of transfers",
             data: data,
+            backgroundColor: backgroundColors,
           }]
         },
 

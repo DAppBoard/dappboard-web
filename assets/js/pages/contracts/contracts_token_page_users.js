@@ -78,10 +78,13 @@ parasails.registerPage('contracts-token-page-users', {
       console.log(this)
       var data = [];
       var labels = [];
+      var backgroundColors = [];
+      var colorHash = new ColorHash();
       var total_left = parseInt(d.total)
       for (user of d.data) {
         data.push(user.transfers)
         labels.push(user.address)
+        backgroundColors.push(colorHash.hex(user.address))
         total_left -= parseInt(user.transfers)
       }
       data.push(total_left);
@@ -101,6 +104,7 @@ parasails.registerPage('contracts-token-page-users', {
           datasets: [{
             label: "Count of transfers",
             data: data,
+            backgroundColor: backgroundColors,
           }]
         },
 

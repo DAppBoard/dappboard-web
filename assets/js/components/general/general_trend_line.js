@@ -57,8 +57,6 @@ parasails.registerComponent('general_trend_line', {
       return 0;
     },
     loadData: function() {
-      console.log(moment)
-      console.log(moment())
       var start = moment().add(- this.days, 'days');
       while(this.cols.length > 0) {this.cols.pop();}
       for (var i = 0; i <this.days; i++) {

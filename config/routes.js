@@ -19,8 +19,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-
+  '/': 'main/PageController.index',
+  
   '/office': 'office/PageController.index',
   '/office/tokens': 'office/PageController.tokens',
 
