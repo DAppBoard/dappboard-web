@@ -21,6 +21,13 @@ module.exports = {
       '89d24a6b4ccb1b6faa2625fe562bdd9a23260359'.toLowerCase(), // DAI
       'a74476443119A942dE498590Fe1f2454d7D4aC0d'.toLowerCase(), // GOLEM
       '1f573d6fb3f13d689ff844b4ce37794d79a7ff1c'.toLowerCase(), // Bancor
+      'f629cbd94d3791c9250152bd8dfbdf380e2a3b9c'.toLowerCase(), // ENJIN
+      'ef68e7c694f40c8202821edf525de3782458639f'.toLowerCase(), // Loopring
+      '41e5560054824ea6b0732e656e3ad64e20e94e45'.toLowerCase(), // Civic
+      'b64ef51c888972c908cfacf59b47c1afbc0ab8ac'.toLowerCase(), // Storj
+      '08711d3b02c8758f2fb3ab4e80228418a7f8e39c'.toLowerCase(), // Edgeless
+      '960b236A07cf122663c4303350609A66A7B288C0'.toLowerCase(), // Aragon
+      '6810e776880c02933d47db1b9fc05908e5386b96'.toLowerCase(), // Gnosis
       'B97048628DB6B661D4C2aA833e95Dbe1A905B280'.toLowerCase() // TENX
     ];
     for (var address of addresses) {
