@@ -10,24 +10,49 @@
     <section class="container">
 
       <div class="sandbox">
-        <h2 class="title is-2">Tokens</h2>
-        <p>7 days transfers</p>
+        <p class="landing-title tooltip is-tooltip-right is-tooltip-multiline" data-tooltip="Some interesting ERC20 tokens with their activity during the last 7 days.">Tokens</p>
         <div class="columns">
           <% for(var i=0; i < 4; i++) {%>
-            <a href="/contract/<%=tokens[i].address%>/token" class="column is-parent is-shady ">
-              <center style="width:100%;">
+            <a href="/contract/<%=tokens[i].address%>/token" class="column is-parent is-shady has-text-centered">
                 <article class="tile is-child notification is-white">
                   <contract_icon :size="50" name="<%=tokens[i].name%>" symbol="<%=tokens[i].symbol%>" address="<%=tokens[i].address%>"></contract_icon>
                   <p class="title is-5"><%=tokens[i].name%></p>
                   <general_trend_line data_key="transfers" :days="7" :data="<%= JSON.stringify(tokens[i].item) %>"></general_trend_line>
                 </article>
-              </center>
             </a>
             <% } %>
-
-
-
         </div>
+        <a style="float: right;" href="/tokens">Explore all ERC20 tokens ></a>
+      </div>
+      <div class="sandbox">
+        <p class="landing-title tooltip is-tooltip-right is-tooltip-multiline" data-tooltip="Some interesting NFT tokens with their activity during the last 7 days.">Non fungible tokens</p>
+        <div class="columns">
+          <% for(var i=0; i < 4; i++) {%>
+            <a href="/contract/<%=nfts[i].address%>/token" class="column is-parent is-shady has-text-centered">
+                <article class="tile is-child notification is-white">
+                  <contract_icon :size="50" name="<%=nfts[i].name%>" symbol="<%=nfts[i].symbol%>" address="<%=nfts[i].address%>"></contract_icon>
+                  <p class="title is-5"><%=nfts[i].name%></p>
+                  <general_trend_line data_key="transfers" :days="7" :data="<%= JSON.stringify(nfts[i].item) %>"></general_trend_line>
+                </article>
+            </a>
+            <% } %>
+        </div>
+        <a style="float: right;" href="/nfts">Explore NFTS ></a>
+      </div>
+      <div class="sandbox">
+        <p class="landing-title tooltip is-tooltip-right is-tooltip-multiline" data-tooltip="Some ERC20 stable coins with their activity during the last 7 days.">Stable coins</p>
+        <div class="columns">
+          <% for(var i=0; i < 4; i++) {%>
+            <a href="/contract/<%=stables[i].address%>/token" class="column is-parent is-shady has-text-centered">
+                <article class="tile is-child notification is-white">
+                  <contract_icon :size="50" name="<%=stables[i].name%>" symbol="<%=stables[i].symbol%>" address="<%=stables[i].address%>"></contract_icon>
+                  <p class="title is-5"><%=stables[i].name%></p>
+                  <general_trend_line data_key="transfers" :days="7" :data="<%= JSON.stringify(stables[i].item) %>"></general_trend_line>
+                </article>
+            </a>
+            <% } %>
+        </div>
+      </div>
         <div class="sandbox">
           <h2 class="title is-2">NFTs</h2>
           <div class="tile is-ancestor">
@@ -167,6 +192,12 @@
       font-family: 'Open Sans', serif;
     }
 
+    .landing-title {
+      width: fit-content;
+      font-size: 2.0rem;
+      font-weight: 700;
+    }
+
     .hero-body .container {
       max-width: 700px;
     }
@@ -210,7 +241,7 @@
 
     .card {
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-      margin-bottom: 2rem;
+      margin-bottom: 0rem;
     }
 
     .intro {
@@ -219,7 +250,7 @@
     }
 
     .sandbox {
-      padding: 5rem 0;
+      padding: 1rem 0;
     }
 
     .tile.notification {
