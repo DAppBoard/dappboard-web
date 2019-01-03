@@ -28,3 +28,7 @@ html, body {
   background: #ECF0F3;
   height: 100%;
 }
+
+.box {
+  border-radius: 2px;
+}
