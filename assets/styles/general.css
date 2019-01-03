@@ -19,3 +19,12 @@
     stroke-width: 2px;
     stroke: #fff;
 }
+
+
+html, body {
+  font-family: 'Thasadith', sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  background: #ECF0F3;
+  height: 100%;
+}

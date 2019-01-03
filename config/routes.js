@@ -20,7 +20,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': 'main/PageController.index',
-  
+  '/contact': 'main/PageController.contact',
+
   '/office': 'office/PageController.index',
   '/office/tokens': 'office/PageController.tokens',
 

@@ -4,7 +4,6 @@ module.exports = {
     var tokens = await sails.helpers.tokens.listSummaryTop.with({type: "token"});
     var nfts = await sails.helpers.tokens.listSummaryTop.with({type: "nft"});
     var stables = await sails.helpers.tokens.listSummaryTop.with({type: "stable"});
-    console.log(tokens)
     return (res.view('pages/homepage', {
       main: {
         nav: 'home',
@@ -15,6 +14,12 @@ module.exports = {
 
     }));
   },
-
+  contact: async function(req, res) {
+    return (res.view('pages/contact', {
+      main: {
+        nav: 'contact',
+      },
+    }));
+  },
 
 }

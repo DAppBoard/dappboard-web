@@ -72,6 +72,7 @@ var jsFilesToInject = [
   'dependencies/vue.js',
   'dependencies/vue-table.js',
   'dependencies/vue-trend.js',
+  'dependencies/vue-typer.js',
 
   'dependencies/parasails.js',
 
