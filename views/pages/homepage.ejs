@@ -14,12 +14,15 @@
         <div class="columns">
           <% for(var i=0; i < 4; i++) {%>
             <a href="/contract/<%=tokens[i].address%>/token" class="column is-parent is-shady has-text-centered">
-                <article class="tile is-child notification is-white">
-                  <contract_icon :size="50" name="<%=tokens[i].name%>" symbol="<%=tokens[i].symbol%>" address="<%=tokens[i].address%>"></contract_icon>
-                  <p class="landing-token-name"><%=tokens[i].name%></p>
-                  <general_trend_line data_key="transfers" :days="7" :data="<%= JSON.stringify(tokens[i].item) %>"></general_trend_line>
-                  <p><%=tokens[i].transfers%> transfers</p>
-                </article>
+              <article class="tile is-child notification is-white">
+                <contract_icon :size="50" name="<%=tokens[i].name%>" symbol="<%=tokens[i].symbol%>" address="<%=tokens[i].address%>"></contract_icon>
+                <p class="landing-token-name">
+                  <%=tokens[i].name%>
+                </p>
+                <general_trend_line data_key="transfers" :days="7" :data="<%= JSON.stringify(tokens[i].item) %>"></general_trend_line>
+                <p>
+                  <%=tokens[i].transfers%> transfers</p>
+              </article>
             </a>
             <% } %>
         </div>
@@ -31,12 +34,15 @@
         <div class="columns">
           <% for(var i=0; i < 4; i++) {%>
             <a href="/contract/<%=nfts[i].address%>/token" class="column is-parent is-shady has-text-centered">
-                <article class="tile is-child notification is-white">
-                  <contract_icon :size="50" name="<%=nfts[i].name%>" symbol="<%=nfts[i].symbol%>" address="<%=nfts[i].address%>"></contract_icon>
-                  <p class="landing-token-name"><%=nfts[i].name%></p>
-                  <general_trend_line data_key="transfers" :days="7" :data="<%= JSON.stringify(nfts[i].item) %>"></general_trend_line>
-                  <p><%=tokens[i].transfers%> transfers</p>
-                </article>
+              <article class="tile is-child notification is-white">
+                <contract_icon :size="50" name="<%=nfts[i].name%>" symbol="<%=nfts[i].symbol%>" address="<%=nfts[i].address%>"></contract_icon>
+                <p class="landing-token-name">
+                  <%=nfts[i].name%>
+                </p>
+                <general_trend_line data_key="transfers" :days="7" :data="<%= JSON.stringify(nfts[i].item) %>"></general_trend_line>
+                <p>
+                  <%=tokens[i].transfers%> transfers</p>
+              </article>
             </a>
             <% } %>
         </div>
@@ -48,12 +54,15 @@
         <div class="columns">
           <% for(var i=0; i < 4; i++) {%>
             <a href="/contract/<%=stables[i].address%>/token" class="column is-parent is-shady has-text-centered">
-                <article class="tile is-child notification is-white">
-                  <contract_icon :size="50" name="<%=stables[i].name%>" symbol="<%=stables[i].symbol%>" address="<%=stables[i].address%>"></contract_icon>
-                  <p class="landing-token-name"><%=stables[i].name%></p>
-                  <general_trend_line data_key="transfers" :days="7" :data="<%= JSON.stringify(stables[i].item) %>"></general_trend_line>
-                  <p><%=tokens[i].transfers%> transfers</p>
-                </article>
+              <article class="tile is-child notification is-white">
+                <contract_icon :size="50" name="<%=stables[i].name%>" symbol="<%=stables[i].symbol%>" address="<%=stables[i].address%>"></contract_icon>
+                <p class="landing-token-name">
+                  <%=stables[i].name%>
+                </p>
+                <general_trend_line data_key="transfers" :days="7" :data="<%= JSON.stringify(stables[i].item) %>"></general_trend_line>
+                <p>
+                  <%=tokens[i].transfers%> transfers</p>
+              </article>
             </a>
             <% } %>
         </div>
@@ -62,9 +71,21 @@
     <div class="box cta " style="margin-top: 50px; padding-top: 7em; padding-bottom: 7em;">
       <div class="container">
         <center>
-        <h3 class="title is-4">Explore applications, not blocks...</h3>
-        <p class="title is-2">We transform raw data as seen in block explorers into<br> something <vue-typer :text='["investors", "VCs", "project managers", "media"]'></vue-typer> can understand.</p>
-      </center>
+          <!-- Begin Mailchimp Signup Form -->
+          <div id="mc_embed_signup">
+            <form action="https://dourlens.us10.list-manage.com/subscribe/post?u=02b3a2f06becb9a2ae0a69e0d&amp;id=e44fb92391" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <h4 class="title is-4">Get insights into your smart contracts to enhance your business and better support your users.</h4>
+<div class="field has-addons">
+              <input  type="email" value="" name="EMAIL" class="input"  placeholder="Your email address" required>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div class="control">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+              </div>
+            </form>
+          </div>
+
+          <!--End mc_embed_signup-->
+        </center>
       </div>
     </div>
     <section class="container">
@@ -72,123 +93,123 @@
 
 
     </section>
-    </div>
   </div>
+</div>
 
-  <style>
-    .box.cta {
-      border-radius: 0;
-      border-left: none;
-      border-right: none;
-    }
+<style>
+  .box.cta {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
 
-    html,
-    body {
-      background: #EFF3F4;
-      font-family: 'Open Sans', serif;
-    }
+  html,
+  body {
+    background: #EFF3F4;
+    font-family: 'Open Sans', serif;
+  }
 
-    hr {
-      height: 1px;
-      background-color: white;
-    }
+  hr {
+    height: 1px;
+    background-color: white;
+  }
 
-    .right_button {
-      float: right;
-      color: : #357cff;
-      border-radius : 2px;
-      font-size: 1rem;
+  .right_button {
+    float: right;
+    color: : #357cff;
+    border-radius: 2px;
+    font-size: 1rem;
 
-    }
+  }
 
-    .landing-title {
-      width: fit-content;
-      font-size: 2.0rem;
-      font-weight: 700;
-      white-space:nowrap;
-      margin-bottom: 15px;
-    }
+  .landing-title {
+    width: fit-content;
+    font-size: 2.0rem;
+    font-weight: 700;
+    white-space: nowrap;
+    margin-bottom: 15px;
+  }
 
-    .landing-token-name {
-      font-size: 1.5rem;
-      font-weight: 600;
-      overflow:hidden;
-    }
+  .landing-token-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    overflow: hidden;
+  }
 
-    .hero-body .container {
-      max-width: 700px;
-    }
+  .hero-body .container {
+    max-width: 700px;
+  }
 
-    .hero-body .title {
-      color: hsl(192, 17%, 99%) !important;
-    }
+  .hero-body .title {
+    color: hsl(192, 17%, 99%) !important;
+  }
 
-    .hero-body .subtitle {
-      color: hsl(192, 17%, 99%) !important;
-      padding-top: 2rem;
-      line-height: 1.5;
-    }
+  .hero-body .subtitle {
+    color: hsl(192, 17%, 99%) !important;
+    padding-top: 2rem;
+    line-height: 1.5;
+  }
 
-    .features {
-      padding: 5rem 0;
-    }
+  .features {
+    padding: 5rem 0;
+  }
 
-    .box.cta {
-      border-radius: 0;
-      border-left: none;
-      border-right: none;
-    }
+  .box.cta {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
 
-    .card-image>.fa {
-      font-size: 8rem;
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-      color: #209cee;
-    }
+  .card-image>.fa {
+    font-size: 8rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    color: #209cee;
+  }
 
-    .card-content .content {
-      font-size: 14px;
-      margin: 1rem 1rem;
-    }
+  .card-content .content {
+    font-size: 14px;
+    margin: 1rem 1rem;
+  }
 
-    .card-content .content h4 {
-      font-size: 16px;
-      font-weight: 700;
-    }
+  .card-content .content h4 {
+    font-size: 16px;
+    font-weight: 700;
+  }
 
-    .card {
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-      margin-bottom: 0rem;
-    }
+  .card {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+    margin-bottom: 0rem;
+  }
 
-    .intro {
-      padding: 5rem 0;
-      text-align: center;
-    }
+  .intro {
+    padding: 5rem 0;
+    text-align: center;
+  }
 
-    .sandbox {
-      padding: 0.8rem 0;
+  .sandbox {
+    padding: 0.8rem 0;
 
-    }
+  }
 
-    .tile.notification {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-    }
+  .tile.notification {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-    .is-shady {
-      animation: flyintoright .4s backwards;
-      background: #fff;
-      box-shadow: rgba(0, 0, 0, .1) 0 1px 0;
-      border-radius: 4px;
-      display: inline-block;
-      margin: 10px;
-      position: relative;
-      transition: all .2s ease-in-out;
-    }
+  .is-shady {
+    animation: flyintoright .4s backwards;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, .1) 0 1px 0;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+    transition: all .2s ease-in-out;
+  }
 
-    .is-shady:hover {
-      box-shadow: 0 10px 16px rgba(0, 0, 0, .13), 0 6px 6px rgba(0, 0, 0, .19);
-    }
-  </style>
+  .is-shady:hover {
+    box-shadow: 0 10px 16px rgba(0, 0, 0, .13), 0 6px 6px rgba(0, 0, 0, .19);
+  }
+</style>
