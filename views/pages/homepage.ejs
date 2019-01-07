@@ -10,7 +10,7 @@
     <section class="container">
 
       <div class="sandbox">
-        <p class="landing-title tooltip is-tooltip-right is-tooltip-multiline" data-tooltip="Some interesting ERC20 tokens with their activity during the last 7 days.">Token weekly activity</p>
+        <p class="landing-title tooltip is-tooltip-right is-tooltip-multiline" data-tooltip="Some interesting ERC20 tokens with their activity during the last 7 days.">Tokens / 7 days</p>
         <div class="columns">
           <% for(var i=0; i < 4; i++) {%>
             <a href="/contract/<%=tokens[i].address%>/token" class="column is-parent is-shady has-text-centered">
@@ -30,7 +30,7 @@
       </div>
       <hr>
       <div class="sandbox">
-        <p class="landing-title tooltip is-tooltip-right is-tooltip-multiline" data-tooltip="Some interesting NFT tokens with their activity during the last 7 days.">Non fungible tokens weekly activity</p>
+        <p class="landing-title tooltip is-tooltip-right is-tooltip-multiline" data-tooltip="Some interesting NFT tokens with their activity during the last 7 days.">NFTs / 7 days</p>
         <div class="columns">
           <% for(var i=0; i < 4; i++) {%>
             <a href="/contract/<%=nfts[i].address%>/token" class="column is-parent is-shady has-text-centered">
@@ -50,7 +50,7 @@
       </div>
       <hr style="">
       <div class="sandbox">
-        <p class="landing-title tooltip is-tooltip-right is-tooltip-multiline" data-tooltip="Some ERC20 stable coins with their activity during the last 7 days.">Stable coins weekly activity</p>
+        <p class="landing-title tooltip is-tooltip-right is-tooltip-multiline" data-tooltip="Some ERC20 stable coins with their activity during the last 7 days.">Stable coins / 7 days</p>
         <div class="columns">
           <% for(var i=0; i < 4; i++) {%>
             <a href="/contract/<%=stables[i].address%>/token" class="column is-parent is-shady has-text-centered">
