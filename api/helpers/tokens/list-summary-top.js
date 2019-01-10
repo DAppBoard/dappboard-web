@@ -55,7 +55,7 @@ module.exports = {
         '89d24a6b4ccb1b6faa2625fe562bdd9a23260359'.toLowerCase(), // DAI
         '0000000000085d4780B73119b644AE5ecd22b376'.toLowerCase(), // TrueUSD
         '57ab1e02fee23774580c119740129eac7081e9d3'.toLowerCase(), // sUSD
-        '395e824b500eacc73e6a976718d64e533843a22c'.toLowerCase(), // Gemini
+        '056fd409e1d7a124bd7017459dfea2f387b6d5cd'.toLowerCase(), // Gemini
         '8e870d67f660d95d5be530380d0ec0bd388289e1'.toLowerCase(), // Paxos
         'dac17f958d2ee523a2206206994597c13d831ec7'.toLowerCase(), // Tether
 
