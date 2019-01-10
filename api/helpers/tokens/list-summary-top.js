@@ -53,8 +53,13 @@ module.exports = {
       addresses = [
         'a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'.toLowerCase(), // USDCoin
         '89d24a6b4ccb1b6faa2625fe562bdd9a23260359'.toLowerCase(), // DAI
-        '8dd5fbce2f6a956c3022ba3663759011dd51e73e'.toLowerCase(), // TrueUSD
+        '0000000000085d4780B73119b644AE5ecd22b376'.toLowerCase(), // TrueUSD
         '57ab1e02fee23774580c119740129eac7081e9d3'.toLowerCase(), // sUSD
+        '395e824b500eacc73e6a976718d64e533843a22c'.toLowerCase(), // Gemini
+        'e1337b7238c8c88f2decba97a9c6cc954a7950ca'.toLowerCase(), // Paxos
+        'dc06d5ec1d1b7f10749242e9487925c8e349fc6e'.toLowerCase(), // BITUSD
+        'dac17f958d2ee523a2206206994597c13d831ec7'.toLowerCase(), // Tether
+
       ];
     }
     for (var address of addresses) {
