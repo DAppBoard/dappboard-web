@@ -57,7 +57,6 @@ module.exports = {
         '57ab1e02fee23774580c119740129eac7081e9d3'.toLowerCase(), // sUSD
         '395e824b500eacc73e6a976718d64e533843a22c'.toLowerCase(), // Gemini
         'e1337b7238c8c88f2decba97a9c6cc954a7950ca'.toLowerCase(), // Paxos
-        'dc06d5ec1d1b7f10749242e9487925c8e349fc6e'.toLowerCase(), // BITUSD
         'dac17f958d2ee523a2206206994597c13d831ec7'.toLowerCase(), // Tether
 
       ];
