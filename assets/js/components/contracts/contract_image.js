@@ -46,7 +46,7 @@ parasails.registerComponent('contract_image', {
 
   filters: {
     getAddress: function(value) {
-      return ("https://github.com/TrustWallet/tokens/raw/master/images/0x" + value.toLowerCase() + ".png");
+      return ("https://raw.githubusercontent.com/TrustWallet/tokens/master/tokens/0x" + value.toLowerCase() + ".png");
     },
     contractAddress: function(value) {
       return "/contract/" + value + "/token";

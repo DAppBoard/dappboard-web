@@ -33,7 +33,7 @@ parasails.registerComponent('contract_icon', {
 
   filters: {
     getAddress: function(value) {
-      return ("https://github.com/TrustWallet/tokens/raw/master/images/0x" + value.toLowerCase() + ".png");
+      return ("https://raw.githubusercontent.com/TrustWallet/tokens/master/tokens/0x" + value.toLowerCase() + ".png");
     },
   },
   watch: {
