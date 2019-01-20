@@ -16,6 +16,8 @@ module.exports = {
   },
   contact: async function(req, res) {
     return (res.view('pages/contact', {
+      description: "Contact the DAppBoard team, we are eager to know your needs.",
+      title: "DAppBoard | Contact us",
       main: {
         nav: 'contact',
       },

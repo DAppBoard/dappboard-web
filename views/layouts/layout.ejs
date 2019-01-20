@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DAppBoard</title>
+
+    <title><%=typeof title == 'undefined' ? 'DAppBoard' : title%></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <%/* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
-    <%/* <meta name="robots" content="noindex"> */%>
+    <meta name="description" content="<%=typeof description == 'undefined' ? 'DAppBoard, an analytic platform for the Ethereum Blockchain, visualize data of smart contracts.' : description%>" />
+    <meta name="keywords" content="<%=typeof description == 'undefined' ? 'DAppBoard' : description%>" />
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/bulma-tooltip.min.css">
