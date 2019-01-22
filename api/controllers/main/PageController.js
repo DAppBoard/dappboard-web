@@ -5,6 +5,8 @@ module.exports = {
     var nfts = await sails.helpers.tokens.listSummaryTop.with({type: "nft"});
     var stables = await sails.helpers.tokens.listSummaryTop.with({type: "stable"});
     return (res.view('pages/homepage', {
+      description: "An analytics platform for Ethereum applications. Know your protocol, application and ecosystem.",
+      title: "DAppBoard",
       main: {
         nav: 'home',
       },

@@ -359,9 +359,9 @@ module.exports = {
   *                                                                         *
   **************************************************************************/
   ssl: {
-    ca: require('fs').readFileSync('/etc/letsencrypt/live/dex.watch/chain.pem'),
-    key: require('fs').readFileSync('/etc/letsencrypt/live/dex.watch/privkey.pem'),
-    cert: require('fs').readFileSync('/etc/letsencrypt/live/dex.watch/cert.pem')
+    ca: require('fs').readFileSync('/etc/letsencrypt/live/dappboard.com/chain.pem'),
+    key: require('fs').readFileSync('/etc/letsencrypt/live/dappboard.com/privkey.pem'),
+    cert: require('fs').readFileSync('/etc/letsencrypt/live/dappboard.com/cert.pem')
   },
 
 
