@@ -11,9 +11,8 @@
 var auth = require('http-auth');
 
 var officeAuth = auth.basic({
-  realm: 'admin area'
 }, function(username, password, onwards) {
-  return onwards(username === 'admin' && password === 'admin');
+  return onwards(username === process.env.DAPPBOARD_OFFICE_USER && password === process.env.DAPPBOARD_OFFICE_PW);
 });
 
 module.exports.policies = {
