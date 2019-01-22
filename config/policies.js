@@ -9,10 +9,12 @@
  */
 
 var auth = require('http-auth');
+var u = process.env.DAPPBOARD_OFFICE_USER;
+var p = process.env.DAPPBOARD_OFFICE_PW;
 
 var officeAuth = auth.basic({
 }, function(username, password, onwards) {
-  return onwards(username === process.env.DAPPBOARD_OFFICE_USER && password === process.env.DAPPBOARD_OFFICE_PW);
+  return onwards(username === u  && password === p);
 });
 
 module.exports.policies = {
