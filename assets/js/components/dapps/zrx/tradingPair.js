@@ -16,11 +16,14 @@ parasails.registerComponent('zrx_trading_pair', {
 
   template: `
   <center class="columns">
-    <a class="column">
+    <a :href="address1 | contractAddress" class="column">
+    <strong>{{sym1}}</strong><br>
       {{name1}}
     </a>
-    <a class="column">
+    <a :href="address2 | contractAddress" class="column">
+    <strong>{{sym2}}</strong><br>
     {{name2}}
+
     </a>
     </center>
   `,

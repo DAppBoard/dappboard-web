@@ -29,7 +29,7 @@ parasails.registerComponent('contract_image', {
     </a>
       <div class="" style="margin-top: 10px;">
      <span style="margin:2px;" class="tag is-light" v-for="item in tags">
-      {{ item }}
+      #{{ item }}
       </span>
     </div>
     </center>

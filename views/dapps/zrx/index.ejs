@@ -1,12 +1,11 @@
 <div id="page_dapp_zrx" class="container">
 <h3 class="title">0x protocol</h3>
-<p>0x is a decentralized protocol for trading digital assets on Ethereum.</p>
+<p><strong>0x</strong> is a decentralized protocol for trading digital assets on Ethereum.<br> In the past 7 days, a total of <strong><%=zrx.total_trades%> trades</strong> on <strong><%=zrx.total_pairs%> pairs</strong> were made by <strong><%=zrx.total_relayers%> relayers</strong>.</p>
 <hr>
 <h3 class="title is-4">Traded pairs / 7 days</h3>
 <v-server-table url="/api/dapp/0x/pairs" :columns="columns" :options="options">
   <center slot="fsym" slot-scope="props">
-    <zrx_trading_pair :name1="props.row.fname" :name2="props.row.sname" :sym1="props.row.fsym" :sym2="props.row.ssym" address1="props.row.faddress" :address2="props.row.saddress"></zrx_trading_pair>
-    <strong>{{ props.row.fsym }}/{{ props.row.ssym }}</strong>
+    <zrx_trading_pair :name1="props.row.fname" :name2="props.row.sname" :sym1="props.row.fsym" :sym2="props.row.ssym" :address1="props.row.faddress" :address2="props.row.saddress"></zrx_trading_pair>
   </center>
   <center slot="count_of_trades" slot-scope="props">
     <strong>{{ props.row.count_of_trades.toLocaleString() }}</strong>

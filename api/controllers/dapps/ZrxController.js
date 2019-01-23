@@ -1,11 +1,9 @@
 module.exports = {
 
   index: async function(req, res) {
+    var zrx = await sails.helpers.dapps.zrx.globalStats.with({});
     return (res.view('dapps/zrx/index', {
-      nav: {
-        name: 'tokens',
-      },
-      token_type: 'erc20',
+      zrx: zrx,
     }));
   },
   pairs: async function(req, res) {
