@@ -35,6 +35,11 @@ module.exports.routes = {
   '/contract/:address/token/nfts': 'contracts/TokenController.nfts',
   '/contract/:address/token': 'contracts/TokenController.index',
 
+  //dapps
+
+  //ZRX 0x protocol
+  '/dapp/0x': 'dapps/ZrxController.index',
+
   // PUBLIC API
   '/api/tokens/list/:type': 'tokens/TokenController.list',
   '/api/tokens/list': 'tokens/TokenController.list',
@@ -42,5 +47,6 @@ module.exports.routes = {
   '/api/tokens/:token/nfts': 'tokens/TokenController.nfts',
   '/api/tokens/:token/users': 'tokens/TokenController.users',
 
+  '/api/dapp/0x/pairs': 'dapps/ZrxController.pairs',
 
 };

@@ -13,7 +13,6 @@ module.exports = {
       tokens: tokens,
       nfts: nfts,
       stables: stables,
-
     }));
   },
   contact: async function(req, res) {
