@@ -48,5 +48,7 @@ module.exports.routes = {
   '/api/tokens/:token/users': 'tokens/TokenController.users',
 
   '/api/dapp/0x/pairs': 'dapps/ZrxController.pairs',
+  '/api/dapp/0x/daily': 'dapps/ZrxController.dailyActivity',
+
 
 };
