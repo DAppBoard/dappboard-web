@@ -39,6 +39,12 @@ module.exports.routes = {
 
   //ZRX 0x protocol
   '/dapp/0x': 'dapps/ZrxController.index',
+  '/api/dapp/0x/pairs': 'dapps/ZrxController.pairs',
+  '/api/dapp/0x/daily': 'dapps/ZrxController.dailyActivity',
+
+  // compound
+  '/dapp/compound': 'dapps/CompoundController.index',
+  '/api/dapp/compound/activity': 'dapps/CompoundController.activity',
 
   // PUBLIC API
   '/api/tokens/list/:type': 'tokens/TokenController.list',
@@ -47,8 +53,7 @@ module.exports.routes = {
   '/api/tokens/:token/nfts': 'tokens/TokenController.nfts',
   '/api/tokens/:token/users': 'tokens/TokenController.users',
 
-  '/api/dapp/0x/pairs': 'dapps/ZrxController.pairs',
-  '/api/dapp/0x/daily': 'dapps/ZrxController.dailyActivity',
+
 
 
 };
