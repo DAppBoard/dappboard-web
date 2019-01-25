@@ -9,7 +9,7 @@ module.exports = {
     return (res.json(results));
   },
   dailyActivity: async function(req, res) {
-    var dailyActivity = await sails.helpers.dapps.zrx.dailyActivity.with({});
+    var dailyActivity = await sails.helpers.dapps.compound.dailyActivity.with({});
     return (res.json(dailyActivity));
   },
 }
