@@ -46,6 +46,8 @@ module.exports.routes = {
   '/dapp/compound': 'dapps/CompoundController.index',
   '/api/dapp/compound/activity': 'dapps/CompoundController.activity',
   '/api/dapp/compound/daily': 'dapps/CompoundController.dailyActivity',
+  '/api/dapp/compound/distribution/token': 'dapps/CompoundController.distributionActivityToken',
+
 
   // PUBLIC API
   '/api/tokens/list/:type': 'tokens/TokenController.list',

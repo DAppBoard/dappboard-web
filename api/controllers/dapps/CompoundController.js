@@ -12,4 +12,8 @@ module.exports = {
     var dailyActivity = await sails.helpers.dapps.compound.dailyActivity.with({});
     return (res.json(dailyActivity));
   },
+  distributionActivityToken: async function(req, res) {
+    var distributionActivityToken = await sails.helpers.dapps.compound.distributionActivityToken.with({});
+    return (res.json(distributionActivityToken));
+  },
 }
