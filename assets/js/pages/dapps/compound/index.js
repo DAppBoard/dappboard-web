@@ -2,6 +2,7 @@ parasails.registerPage('page_dapp_compound', {
 
   data: {
     columns: [
+      'timestamp',
       'account',
       'name',
       'type',
@@ -9,9 +10,11 @@ parasails.registerPage('page_dapp_compound', {
     ],
     options: {
       filterable: false,
-      perPageValues: [10, 25, 50, 100, 500],
-      perPage: 10,
+      perPageValues: [25, 50, 100, 500],
+      perPage: 25,
       headings: {
+        'type': 'Action',
+        'amounts': 'Amount',
       }
     }
   },

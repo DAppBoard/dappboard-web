@@ -1,9 +1,7 @@
 module.exports = {
 
   index: async function(req, res) {
-    var zrx = await sails.helpers.dapps.zrx.globalStats.with({});
     return (res.view('dapps/compound/index', {
-      zrx: zrx,
     }));
   },
   activity: async function(req, res) {

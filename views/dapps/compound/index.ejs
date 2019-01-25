@@ -5,6 +5,23 @@
 <hr>
 <h3 class="title is-4">Activity</h3>
 <v-server-table url="/api/dapp/compound/activity" :columns="columns" :options="options">
+  <center slot="timestamp" slot-scope="props">
+    <from-now :timestamp="props.row.timestamp"></from-now>
+  </center>
+  <center slot="account" slot-scope="props">
+    <address_etherscan_link :address="props.row.account"></address_etherscan_link>
+  </center>
+  <center slot="type" slot-scope="props">
+    <p v-if="props.row.type =='borrow' && props.row.amounts >= 0" style="color: #1976d2">Borrow</p>
+    <p v-if="props.row.type =='borrow' && props.row.amounts < 0" style="color: #00796b">Repay borrow</p>
+    <p v-if="props.row.type =='supply' && props.row.amounts >= 0" style="color: #689f38">Add supply</p>
+    <p v-if="props.row.type =='supply' && props.row.amounts < 0" style="color: #e64a19">Remove supply</p>
+
+  </center>
+    <center slot="name" slot-scope="props">
+      <strong>{{props.row.name}}</strong> ({{props.row.symbol}})
+    </center>
+
 </v-server-table>
 </div>
 </div>
