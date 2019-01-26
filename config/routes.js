@@ -42,11 +42,14 @@ module.exports.routes = {
   '/api/dapp/0x/pairs': 'dapps/ZrxController.pairs',
   '/api/dapp/0x/daily': 'dapps/ZrxController.dailyActivity',
 
-  // compound
+  //Compound
   '/dapp/compound': 'dapps/CompoundController.index',
   '/api/dapp/compound/activity': 'dapps/CompoundController.activity',
   '/api/dapp/compound/daily': 'dapps/CompoundController.dailyActivity',
   '/api/dapp/compound/distribution/token': 'dapps/CompoundController.distributionActivityToken',
+
+  //Bounties Network
+  '/dapp/bounties': 'dapps/BountiesController.index',
 
 
   // PUBLIC API
