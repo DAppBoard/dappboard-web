@@ -2,17 +2,17 @@ parasails.registerPage('page_dapp_bounties', {
 
   data: {
     columns: [
-      'fsym',
-      'count_of_trades',
-      'count_of_traders',
-      'count_of_relayers',
+      'timestamp',
+      'bounty_id',
+      'type',
     ],
     options: {
       filterable: false,
       perPageValues: [25, 50, 100, 500],
       perPage: 25,
       headings: {
-        fsym: 'Token pair',
+        'timestamp': 'Date',
+        'bounty_id': 'Bounty',
       }
     }
   },
@@ -26,6 +26,6 @@ parasails.registerPage('page_dapp_bounties', {
   },
 
   methods: {
-  
+
   }
 });

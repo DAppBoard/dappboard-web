@@ -50,6 +50,7 @@ module.exports.routes = {
 
   //Bounties Network
   '/dapp/bounties': 'dapps/BountiesController.index',
+  '/api/dapp/bounties/activity': 'dapps/BountiesController.activity',
 
 
   // PUBLIC API

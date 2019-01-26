@@ -3,26 +3,25 @@
 <h3 class="title"><img src="/images/dapps/bounties.png" style="height: 0.8em; margin-right: 20px;"></img>The Bounties Network</h3>
 <p>The <strong>Bounties Network</strong> empowers humans to incentivize and self-organize, from freelancing to grassroots social action, and anything in between. Whether it's for research, content translation, or video production, The Bounties Network lets you create projects, collaborate, and get paid for doing great work in any domain.</p>
 <hr>
-<h3 class="title is-4">90 days activity</h3>
-<canvas id="dapp_compound_daily_chart" width="100" height="40" ></canvas>
-<hr>
-<h3 class="title is-4">Distribution of token activity / 7 days</h3>
-<canvas id="dapp_compound_distribution_token" width="100" height="40" ></canvas>
-<hr>
 <h3 class="title is-4">Activity</h3>
 <v-server-table url="/api/dapp/bounties/activity" :columns="columns" :options="options">
   <center slot="timestamp" slot-scope="props">
     <from-now :timestamp="props.row.timestamp"></from-now>
   </center>
-  <center slot="account" slot-scope="props">
-    <address_etherscan_link :address="props.row.account"></address_etherscan_link>
+  <center slot="bounty_id" slot-scope="props">
+    <bounty-link :bounty_id="props.row.bounty_id"></bounty-link>
   </center>
   <center slot="type" slot-scope="props">
-    <p v-if="props.row.type =='borrow' && props.row.amounts >= 0" style="color: #1976d2">Borrow</p>
-    <p v-if="props.row.type =='borrow' && props.row.amounts < 0" style="color: #00796b">Repay borrow</p>
-    <p v-if="props.row.type =='supply' && props.row.amounts >= 0" style="color: #689f38">Add supply</p>
-    <p v-if="props.row.type =='supply' && props.row.amounts < 0" style="color: #e64a19">Remove supply</p>
-
+    <p v-if="props.row.type =='BountyIssued'" style="color: #000000">Bounty Issued</p>
+    <p v-if="props.row.type =='ContributionAdded'"><span style="color: #000000">Contribution Added</span> by <address_etherscan_link :address="props.row.topic_1"></address_etherscan_link></p>
+    <p v-if="props.row.type =='BountyActivated'" style="color: #000000">Bounty Activated</p>
+    <p v-if="props.row.type =='BountyFulfilled'" ><span style="color: #1e88e5">Bounty Fulfilled</span> by <address_etherscan_link :address="props.row.topic_1"></address_etherscan_link></p>
+    <p v-if="props.row.type =='FulfillmentAccepted'" ><span style="color: #558b2f">Fulfillment Accepted</span> by <address_etherscan_link :address="props.row.topic_1"></address_etherscan_link></p>
+    <p v-if="props.row.type =='PaymentIncreased'" style="color: #000000">Payment Increased</p>
+    <p v-if="props.row.type =='BountyKilled'" style="color: #000000">Bounty Killed</p>
+    <p v-if="props.row.type =='BountyChanged'" style="color: #000000">Bounty Changed</p>
+    <p v-if="props.row.type =='IssuerTransferred'" style="color: #000000">Issuer Transferred</p>
+    <p v-if="props.row.type =='DeadlineExtended'" style="color: #000000">Deadline Extended</p>
   </center>
     <center slot="name" slot-scope="props">
       <strong>{{props.row.name}}</strong> ({{props.row.symbol}})
