@@ -11,7 +11,7 @@ parasails.registerComponent('bounty-link', {
   },
 
   template: `
-  <a target="_blank" :href="bounty_id | makeLink" >
+  <a :href="bounty_id | makeLink" >
   {{bounty_id}}
   </a>
   `,
@@ -28,7 +28,7 @@ parasails.registerComponent('bounty-link', {
 
   filters: {
     makeLink: function(value) {
-      return ("https://explorer.bounties.network/bounty/" + value);
+      return ("/dapp/bounties/bounty/" + value);
     },
 
   },

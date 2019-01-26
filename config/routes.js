@@ -49,8 +49,10 @@ module.exports.routes = {
   '/api/dapp/compound/distribution/token': 'dapps/CompoundController.distributionActivityToken',
 
   //Bounties Network
+  '/dapp/bounties/bounty/:id': 'dapps/BountiesController.bounty',
   '/dapp/bounties': 'dapps/BountiesController.index',
   '/api/dapp/bounties/activity': 'dapps/BountiesController.activity',
+  '/api/dapp/bounties/activity/:bounty_id': 'dapps/BountiesController.activityBounty',
 
 
   // PUBLIC API
