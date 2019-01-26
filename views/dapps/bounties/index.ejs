@@ -15,7 +15,7 @@
     <p v-if="props.row.type =='BountyIssued'" style="color: #000000">Bounty Issued</p>
     <p v-if="props.row.type =='ContributionAdded'"><span style="color: #000000">Contribution Added</span> by <address_etherscan_link :address="props.row.topic_1"></address_etherscan_link></p>
     <p v-if="props.row.type =='BountyActivated'" style="color: #000000">Bounty Activated</p>
-    <p v-if="props.row.type =='BountyFulfilled'" ><span style="color: #1e88e5">Bounty Fulfilled</span> by <address_etherscan_link :address="props.row.topic_1"></address_etherscan_link></p>
+    <p v-if="props.row.type =='BountyFulfilled'" ><span style="color: #9e9d24">Bounty Fulfilled</span> by <address_etherscan_link :address="props.row.topic_1"></address_etherscan_link></p>
     <p v-if="props.row.type =='FulfillmentAccepted'" ><span style="color: #558b2f">Fulfillment Accepted</span> by <address_etherscan_link :address="props.row.topic_1"></address_etherscan_link></p>
     <p v-if="props.row.type =='PaymentIncreased'" style="color: #000000">Payment Increased</p>
     <p v-if="props.row.type =='BountyKilled'" style="color: #000000">Bounty Killed</p>

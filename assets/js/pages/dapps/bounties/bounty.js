@@ -3,8 +3,8 @@ parasails.registerPage('page_dapp_bounties_bounty', {
   data: {
     columns: [
       'timestamp',
-      'bounty_id',
       'type',
+      'transaction_hash',
     ],
     options: {
       filterable: false,
@@ -12,7 +12,7 @@ parasails.registerPage('page_dapp_bounties_bounty', {
       perPage: 25,
       headings: {
         'timestamp': 'Date',
-        'bounty_id': 'Bounty',
+        'transaction_hash': 'Transaction',
       }
     }
   },
