@@ -3,6 +3,9 @@
 <h3 class="title"><img src="/images/dapps/bounties.png" style="height: 0.8em; margin-right: 20px;"></img>The Bounties Network</h3>
 <p>The <strong>Bounties Network</strong> empowers humans to incentivize and self-organize, from freelancing to grassroots social action, and anything in between. Whether it's for research, content translation, or video production, The Bounties Network lets you create projects, collaborate, and get paid for doing great work in any domain.</p>
 <hr>
+<h3 class="title is-4">Bounties creation and completion / 90 days</h3>
+<canvas id="dapp_bounties_network_daily" width="100" height="40" ></canvas>
+<hr>
 <h3 class="title is-4">Activity</h3>
 <v-server-table url="/api/dapp/bounties/activity" :columns="columns" :options="options">
   <center slot="timestamp" slot-scope="props">

@@ -23,4 +23,8 @@ module.exports = {
     var results = await sails.helpers.dapps.bounties.dailyActivity.with(req.query);
     return (res.json(results));
   },
+  fullfillers: async function(req, res) {
+    var results = await sails.helpers.dapps.bounties.fullfillers.with(req.query);
+    return (res.json(results));
+  },
 }
