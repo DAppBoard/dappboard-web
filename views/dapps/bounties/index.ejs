@@ -6,6 +6,9 @@
 <h3 class="title is-4">Bounties creation and completion / 90 days</h3>
 <canvas id="dapp_bounties_network_daily" width="100" height="40" ></canvas>
 <hr>
+<h3 class="title is-4">Submissions to bounties / 90 days</h3>
+<canvas id="dapp_bounties_network_daily_submisiions" width="100" height="40" ></canvas>
+<hr>
 <h3 class="title is-4">Top bounty fulfillers / 90 days</h3>
 <v-server-table url="/api/dapp/bounties/fulfillers" :columns="columns_fulfillers" :options="options_fulfillers">
   <center slot="address" slot-scope="props">
