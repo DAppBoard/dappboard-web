@@ -99,9 +99,9 @@ parasails.registerPage('page_dapp_bounties', {
           data: {
             labels: results.day,
             datasets: [{
-                type: 'line',
+                type: 'bar',
                 label: "Submissions",
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                backgroundColor: 'rgba(255, 99, 132, 0.4)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: results.bounty_fullfilled,
                 fill: false,
