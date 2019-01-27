@@ -15,20 +15,19 @@ parasails.registerPage('page_dapp_bounties', {
         'bounty_id': 'Bounty',
       }
     },
-    data_fulfillers: {
-      columns: [
-        'address',
-        'count',
-      ],
-      options_fulfillers: {
-        filterable: false,
-        perPageValues: [10, 25, 50, 100, 500],
-        perPage: 10,
-        headings: {
-          'address': 'Address',
-          'count': 'Fulfilled bounties',
-        }
+    columns_fulfillers: [
+      'address',
+      'count',
+    ],
+    options_fulfillers: {
+      filterable: false,
+      perPageValues: [15, 25, 50, 100, 500],
+      perPage: 15,
+      headings: {
+        'address': 'Address',
+        'count': 'Fulfilled bounties',
       }
+    }
   },
 
   beforeMount: function() {
@@ -61,7 +60,7 @@ parasails.registerPage('page_dapp_bounties', {
           data: {
             labels: results.day,
             datasets: [{
-              type: 'line',
+                type: 'line',
                 label: "Bounties completed",
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgb(255, 99, 132)',
