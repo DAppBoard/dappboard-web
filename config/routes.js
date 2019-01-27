@@ -53,7 +53,7 @@ module.exports.routes = {
   '/dapp/bounties/bounty/:bounty_id': 'dapps/BountiesController.bounty',
   '/api/dapp/bounties/activity': 'dapps/BountiesController.activity',
   '/api/dapp/bounties/activity/:bounty_id': 'dapps/BountiesController.activityBounty',
-
+  '/api/dapp/bounties/daily': 'dapps/BountiesController.dailyActivity',
 
   // PUBLIC API
   '/api/tokens/list/:type': 'tokens/TokenController.list',
