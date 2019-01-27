@@ -14,7 +14,21 @@ parasails.registerPage('page_dapp_bounties', {
         'timestamp': 'Date',
         'bounty_id': 'Bounty',
       }
-    }
+    },
+    data_fulfillers: {
+      columns: [
+        'address',
+        'count',
+      ],
+      options_fulfillers: {
+        filterable: false,
+        perPageValues: [10, 25, 50, 100, 500],
+        perPage: 10,
+        headings: {
+          'address': 'Address',
+          'count': 'Fulfilled bounties',
+        }
+      }
   },
 
   beforeMount: function() {
