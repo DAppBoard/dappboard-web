@@ -9,10 +9,20 @@
 
     <section class="container">
       <div class="sandbox">
-        <p class="landing-title " >Decentralized Applications</p>
+        <p class="landing-title ">Decentralized Applications</p>
         <div class="columns">
-            <a href="/dapp/0x" class="column is-parent is-shady has-text-centered is-4">
-              <center>
+          <a href="/dapp/compound" class="column is-parent is-shady has-text-centered">
+            <center>
+              <article class="tile is-child notification is-white">
+                <img src="/images/dapps/compound.png" style="width:40%"></img>
+                <p class="landing-token-name">
+                  Compound
+                </p>
+              </article>
+            </center>
+          </a>
+          <a href="/dapp/0x" class="column is-parent is-shady has-text-centered">
+            <center>
               <article class="tile is-child notification is-white">
                 <img src="/images/dapps/zrx.png" style="width:40%"></img>
                 <p class="landing-token-name">
@@ -21,32 +31,22 @@
               </article>
             </center>
           </a>
-          <a href="/dapp/compound" class="column is-parent is-shady has-text-centered is-4">
+          <a href="/dapp/bounties" class="column is-parent is-shady has-text-centered">
             <center>
-            <article class="tile is-child notification is-white">
-              <img src="/images/dapps/compound.png" style="width:40%"></img>
-              <p class="landing-token-name">
-                Compound
-              </p>
-            </article>
-          </center>
-        </a>
-        <a href="/dapp/bounties" class="column is-parent is-shady has-text-centered is-4">
-          <center>
-          <article class="tile is-child notification is-white">
-            <img src="/images/dapps/bounties.png" style="width:40%"></img>
-            <p class="landing-token-name">
-              Bounties
-            </p>
-          </article>
-        </center>
-      </a>
+              <article class="tile is-child notification is-white">
+                <img src="/images/dapps/bounties.png" style="width:40%"></img>
+                <p class="landing-token-name">
+                  Bounties
+                </p>
+              </article>
+            </center>
+          </a>
         </div>
-        <a class="right_button tag is-success" href="/contact">Get analytics for your DApp</a>
+        <center><a class="button is-medium is-success" href="/contact" style="background-color: #FC5C60; border-radius: 2px;"><strong>Get analytics for your DApp</strong></a></center>
       </div>
       <hr>
       <div class="sandbox">
-        <p class="landing-title " >Tokens / 7 days</p>
+        <p class="landing-title ">Tokens / 7 days</p>
         <div class="columns">
           <% for(var i=0; i < 4; i++) {%>
             <a href="/contract/<%=tokens[i].address%>/token" class="column is-parent is-shady has-text-centered">
@@ -86,7 +86,7 @@
       </div>
       <hr style="">
       <div class="sandbox">
-        <p class="landing-title " >Stable coins / 7 days</p>
+        <p class="landing-title ">Stable coins / 7 days</p>
         <div class="columns">
           <% for(var i=0; i < 4; i++) {%>
             <a href="/contract/<%=stables[i].address%>/token" class="column is-parent is-shady has-text-centered">
@@ -110,14 +110,14 @@
           <div class="column is-4">
             <img src="images/illustrations/landing_1.svg"></img>
           </div>
-          <div class="column is-8 has-text-centered" >
+          <div class="column is-8 has-text-centered">
             <h3 class="title">DAppBoard provides analytics for Ethereum applications</h3>
             <p>We gather and transform blockchain data into <strong>key metrics to understand and expand your business </strong>.</p>
           </div>
         </div>
       </div>
     </div>
-    <section class="container"  style=" padding-top: 5em; padding-bottom: 5em;">
+    <section class="container" style=" padding-top: 5em; padding-bottom: 5em;">
       <center>
         <!-- Begin Mailchimp Signup Form -->
         <div id="mc_embed_signup">
@@ -125,15 +125,15 @@
             <h4 class="title is-4">Get insights about Ethereum applications and protocols to enhance your business and better support your users.</h4>
             <div class="field has-addons is-large">
               <div class="control is-expanded has-icons-left has-icons-right">
-            <input  type="email" value="" name="EMAIL" class="input"  placeholder="Your email address" required>
-            <span class="icon  is-left">
+                <input type="email" value="" name="EMAIL" class="input" placeholder="Your email address" required>
+                <span class="icon  is-left">
             <i class="fas fa-envelope"></i>
           </span>
 
-          </div>
-            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-            <div class="control is-large">
-              <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+              </div>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div class="control is-large">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
             </div>
           </form>
 
