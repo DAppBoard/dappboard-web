@@ -21,6 +21,7 @@ module.exports.routes = {
 
   '/': 'main/PageController.index',
   '/contact': 'main/PageController.contact',
+  '/iwantadashboard': 'main/PageController.iwantadashboard',
 
   '/office': 'office/PageController.index',
   '/office/tokens': 'office/PageController.tokens',

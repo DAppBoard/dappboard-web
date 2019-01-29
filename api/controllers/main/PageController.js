@@ -24,5 +24,14 @@ module.exports = {
       },
     }));
   },
+  iwantadashboard: async function(req, res) {
+    return (res.view('pages/iwantadashboard', {
+      description: "Contact the DAppBoard team, we are eager to know your needs.",
+      title: "DAppBoard | Get a dashboard",
+      main: {
+        nav: 'contact',
+      },
+    }));
+  },
 
 }
