@@ -16,7 +16,6 @@ module.exports = {
   },
 
   users: async function(req, res) {
-    console.log(req.params)
     var contract = await sails.helpers.contracts.get.with({"address": req.params['address']});
     if (contract == null) {
       return res.notFound();
@@ -32,7 +31,6 @@ module.exports = {
   },
 
   nfts: async function(req, res) {
-    console.log(req.params)
     var contract = await sails.helpers.contracts.get.with({"address": req.params['address']});
     if (contract == null) {
       return res.notFound();

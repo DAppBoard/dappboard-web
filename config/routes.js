@@ -35,6 +35,7 @@ module.exports.routes = {
   '/contract/:address/token/users': 'contracts/TokenController.users',
   '/contract/:address/token/nfts': 'contracts/TokenController.nfts',
   '/contract/:address/token': 'contracts/TokenController.index',
+  '/contract/:address/events': 'contracts/ContractController.events',
 
   //dapps
 
@@ -63,6 +64,7 @@ module.exports.routes = {
   '/api/tokens/:token/daily': 'tokens/TokenController.daily',
   '/api/tokens/:token/nfts': 'tokens/TokenController.nfts',
   '/api/tokens/:token/users': 'tokens/TokenController.users',
+  '/api/events/:address/types': 'contracts/ContractController.types',
 
 
 

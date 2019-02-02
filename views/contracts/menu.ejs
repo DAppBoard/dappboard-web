@@ -3,15 +3,21 @@
     <contract_image address="<%= contracts.contract.address %>" :tags="<%= JSON.stringify(contracts.contract.tags) %>" name="<%= contracts.contract.name %>"></contract_image>
 </div>
     <hr style="background-color: #EBEEF3;">
-
+    <p class="menu-label" style="padding-left: 10px;">
+    Smart Contract
+    </p>
+    <ul class="menu-list" >
+      <li ><a href="/contract/<%= contracts.contract.address %>/events" class="<%= contracts.nav == 'contracts_events' ? 'is-active': '' %>">Events</a></li>
+    </ul>
+    <hr>
     <p class="menu-label" style="padding-left: 10px;">
     Token
     </p>
-     <ul class="menu-list" >
-    <li ><a href="/contract/<%= contracts.contract.address %>/token" class="<%= contracts.nav == 'token' ? 'is-active': '' %>">General</a></li>
-    <li ><a href="/contract/<%= contracts.contract.address %>/token/users" class="<%= contracts.nav == 'token_users' ? 'is-active': '' %>">Users</a></li>
-    <li ><a v-if="<%= contracts.contract.is_erc721 %>" href="/contract/<%= contracts.contract.address %>/token/nfts" class="<%= contracts.nav == 'token_nfts' ? 'is-active': '' %>">NFT</a></li>
-  </ul>
+    <ul class="menu-list" >
+      <li ><a href="/contract/<%= contracts.contract.address %>/token" class="<%= contracts.nav == 'token' ? 'is-active': '' %>">General</a></li>
+      <li ><a href="/contract/<%= contracts.contract.address %>/token/users" class="<%= contracts.nav == 'token_users' ? 'is-active': '' %>">Users</a></li>
+      <li ><a v-if="<%= contracts.contract.is_erc721 %>" href="/contract/<%= contracts.contract.address %>/token/nfts" class="<%= contracts.nav == 'token_nfts' ? 'is-active': '' %>">NFT</a></li>
+    </ul>
 
 
 </aside>
