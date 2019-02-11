@@ -3,46 +3,11 @@ parasails.registerPage('contracts-page-events', {
   data: {
     startDate: moment().subtract(7, 'days'),
     endDate: moment().subtract(1, 'days'),
-    c_users: {},
-    columns: [
-      'nft',
-      'transfers',
-    ],
-    options: {
-      params: {
-        startDate: moment().subtract(7, 'days').format('YYYY/MM/DD HH:mm:ss'),
-        endDate: moment().subtract(1, 'days').format('YYYY/MM/DD HH:mm:ss'),
-      },
-      filterable: false,
-      uniqueKey: 'address',
-      perPageValues: [15, 25, 50, 100, 500],
-      perPage: 15,
-      saveState: true,
-      pagination: {
-        edge: true,
-      },
-      orderBy: {
-        ascending: false,
-        column: 'transfers',
-      },
-      sortIcon: {
-        base: 'fas',
-        up: 'fa-chevron-up',
-        down: 'fa-chevron-down',
-        is: 'fa-sort'
-      },
-      headings: {
-        nft: 'Collectible',
-        transfers: 'Number of transfers',
-
-      },
-      headingsTooltips: {
-
-      },
-
-    },
+    events_name: [],
+    events_topic: [],
+    events_count: [],
+    events_color: [],
   },
-
 
   beforeMount: function() {
     console.log('before monted')
@@ -51,7 +16,6 @@ parasails.registerPage('contracts-page-events', {
   mounted: function() {
     console.log("Successfully mounted");
     var ctxo = this;
-    console.log(ctxo.options.params.startDate);
     $('#tokendaterange').daterangepicker({
       "opens": "left",
       //"autoApply": true,
@@ -64,15 +28,48 @@ parasails.registerPage('contracts-page-events', {
       "startDate": ctxo.startDate,
       "endDate": ctxo.endDate,
     }, function(start, end, label) {
-      Vue.set(ctxo.options.params, 'startDate', start.format('YYYY/MM/DD HH:mm:ss'))
-      Vue.set(ctxo.options.params, 'endDate', end.format('YYYY/MM/DD HH:mm:ss'))
-      ctxo.$refs.table.refresh()
-
-
+      Vue.set(ctxo, 'startDate', start)
+      Vue.set(ctxo, 'endDate', end)
+      ctxo.refreshGraph();
     });
+    this.refreshGraph();
   },
 
   methods: {
+    refreshGraph: function() {
+      var ctxo = this;
+      $.get('/api/events/' + SAILS_LOCALS.contracts.contract.address + '/types', {
+        startdate: ctxo.startDate.format('YYYY-MM-DD'),
+        enddate: ctxo.endDate.format('YYYY-MM-DD'),
+      }, function(res) {
+        var colorHash = new ColorHash();
+        for (var e of res.events) {
+          ctxo.events_name.push(e.name);
+          ctxo.events_topic.push(e.topic_0);
+          ctxo.events_count.push(e.count);
+          ctxo.events_color.push(colorHash.hex(e.topic_0))
+
+        }
+        var c1 = $('#contracts_events_donut')[0].getContext('2d');
+        ctxo.c_users = new Chart(c1, {
+          // The type of chart we want to create
+          type: 'doughnut',
+
+          // The data for our dataset
+          data: {
+            labels: ctxo.events_name,
+            datasets: [{
+              label: "Count of transfers",
+              data: ctxo.events_count,
+              backgroundColor: ctxo.events_color,
+            }]
+          },
+
+          // Configuration options go here
+          //  options: options
+        });
+      });
+    },
     onLoaded: function(d) {
       var data = [];
       var labels = [];
@@ -107,7 +104,7 @@ parasails.registerPage('contracts-page-events', {
         },
 
         // Configuration options go here
-      //  options: options
+        //  options: options
       });
 
     }

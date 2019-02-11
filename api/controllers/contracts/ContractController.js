@@ -19,7 +19,8 @@ module.exports = {
   },
 
   types: async function(req, res) {
-    var p = req.params;
+    var p = req.allParams();
+    console.log(req.allParams())
     var types = await sails.helpers.contracts.getEvents.with(p);
     return (res.json(types));
   },
