@@ -7,6 +7,8 @@ parasails.registerPage('contracts-page-events', {
     events_topic: [],
     events_count: [],
     events_color: [],
+    c_daily: null,
+    c_distribution: null,
   },
 
   beforeMount: function() {
@@ -42,16 +44,67 @@ parasails.registerPage('contracts-page-events', {
         startdate: ctxo.startDate.format('YYYY-MM-DD'),
         enddate: ctxo.endDate.format('YYYY-MM-DD'),
       }, function(res) {
+        if (ctxo.c_daily != null) {
+          ctxo.c_daily.destroy();
+        }
+        if (ctxo.c_distribution != null) {
+          ctxo.c_distribution.destroy();
+        }
+        console.log(res)
         var colorHash = new ColorHash();
+        var datasets = [];
+        var days = HELPERS.normalizeTimeSerie(ctxo.startDate, ctxo.endDate, res.days);
+        ctxo.events_name = [];
+        ctxo.events_topic = [];
+        ctxo.events_count = [];
+        ctxo.events_color = [];
         for (var e of res.events) {
           ctxo.events_name.push(e.name);
           ctxo.events_topic.push(e.topic_0);
           ctxo.events_count.push(e.count);
           ctxo.events_color.push(colorHash.hex(e.topic_0))
+          console.log(days)
+          console.log(e.topic_0)
 
+          console.log(days[e.topic_0]);
+          datasets.push({
+            label: e.name,
+            backgroundColor: colorHash.hex(e.topic_0),
+            borderColor: colorHash.hex(e.topic_0),
+            data: days[e.topic_0.substring(0, 63)],
+          })
         }
-        var c1 = $('#contracts_events_donut')[0].getContext('2d');
-        ctxo.c_users = new Chart(c1, {
+        console.log(datasets)
+        var c_daily = $('#contracts_events_timeline')[0].getContext('2d');
+        ctxo.c_daily = new Chart(c_daily, {
+          // The type of chart we want to create
+          type: 'line',
+
+          // The data for our dataset
+          data: {
+            labels: days.day,
+            datasets: datasets
+          },
+
+          // Configuration options go here
+          options: {
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            scales: {
+              xAxes: [{
+                stacked: true,
+              }],
+              yAxes: [{
+                stacked: true
+              }]
+            }
+          }
+        });
+
+        var c_distribution = $('#contracts_events_donut')[0].getContext('2d');
+        ctxo.c_distribution = new Chart(c_distribution, {
           // The type of chart we want to create
           type: 'doughnut',
 
@@ -70,44 +123,6 @@ parasails.registerPage('contracts-page-events', {
         });
       });
     },
-    onLoaded: function(d) {
-      var data = [];
-      var labels = [];
-      var backgroundColors = [];
-      var colorHash = new ColorHash();
-      var total_left = parseInt(d.total)
-      for (nft of d.data) {
-        data.push(nft.transfers)
-        labels.push(nft.nft)
-        backgroundColors.push(colorHash.hex(nft.nft))
-        total_left -= parseInt(nft.transfers)
-      }
-      data.push(total_left);
-      labels.push('Others')
-      var c1 = $('#chart_nfts')[0].getContext('2d');
-      var ctxo = this;
-      if (ctxo.c_users.destroy != null) {
-        ctxo.c_users.destroy()
-      }
-      ctxo.c_users = new Chart(c1, {
-        // The type of chart we want to create
-        type: 'doughnut',
-
-        // The data for our dataset
-        data: {
-          labels: labels,
-          datasets: [{
-            label: "Count of transfers",
-            data: data,
-            backgroundColor: backgroundColors,
-          }]
-        },
-
-        // Configuration options go here
-        //  options: options
-      });
-
-    }
 
 
   }

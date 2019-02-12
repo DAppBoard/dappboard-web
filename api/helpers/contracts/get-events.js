@@ -41,10 +41,11 @@ module.exports = {
     var q = knex.select('name', 'topic_0').count('*', 'count').where('timestamp', '>=', inputs['startdate']).where('timestamp', '<=', inputs['enddate']).where('address', inputs['address']).from('events').leftJoin('meta_events', 'topic_0', 'meta_events.topic').groupBy('topic_0', 'name');
     var results = await sails.helpers.db.execute(q.toString());
     var events = results.rows;
-    var q_daily = knex.select(knex.raw('CAST("timestamp" AS date) AS "day"')).where('timestamp', '>=', inputs['startdate']).where('timestamp', '<=', inputs['enddate']).where('address', inputs['address']).from('events').groupByRaw('CAST("timestamp" AS date)');
+    var q_daily = knex.select(knex.raw('CAST("timestamp" AS date) AS "day"')).whereRaw(knex.raw("timestamp::date >= '" + inputs['startdate'] + "'")).whereRaw(knex.raw("timestamp::date <= '" + inputs['enddate'] + "'")).where('address', inputs['address']).from('events').groupByRaw('CAST("timestamp" AS date)');
     for (var e of events) {
       q_daily = q_daily.select(knex.raw("COUNT( CASE WHEN topic_0 = '" + e.topic_0 + "' THEN 1 END ) AS " + '"' + e.topic_0 + '"'));
     }
+    console.log(q_daily.toString());
     var results = await sails.helpers.db.execute(q_daily.toString());
     return exits.success({events: events, days: results.rows});
   }
