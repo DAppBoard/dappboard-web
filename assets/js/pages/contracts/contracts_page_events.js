@@ -9,6 +9,8 @@ parasails.registerPage('contracts-page-events', {
     events_color: [],
     c_daily: null,
     c_distribution: null,
+    events: [],
+    loading:true,
   },
 
   beforeMount: function() {
@@ -38,12 +40,23 @@ parasails.registerPage('contracts-page-events', {
   },
 
   methods: {
+    toggle: function(index) {
+      console.log(this.events[index].visible)
+      Vue.set(this.events[index], 'visible', !this.events[index].visible);
+      console.log(this.events[index].visible)
+      this.c_daily.data.datasets[index].hidden = !this.events[index].visible;
+      this.c_daily.update();
+      this.c_distribution.getDatasetMeta(0).data[index].hidden = !this.events[index].visible;
+      this.c_distribution.update();
+    },
     refreshGraph: function() {
       var ctxo = this;
+      this.loading = true;
       $.get('/api/events/' + SAILS_LOCALS.contracts.contract.address + '/types', {
         startdate: ctxo.startDate.format('YYYY-MM-DD'),
         enddate: ctxo.endDate.format('YYYY-MM-DD'),
       }, function(res) {
+        ctxo.loading = false;
         if (ctxo.c_daily != null) {
           ctxo.c_daily.destroy();
         }
@@ -58,15 +71,21 @@ parasails.registerPage('contracts-page-events', {
         ctxo.events_topic = [];
         ctxo.events_count = [];
         ctxo.events_color = [];
+        ctxo.events = [];
+        var i = 0;
         for (var e of res.events) {
           ctxo.events_name.push(e.name);
           ctxo.events_topic.push(e.topic_0);
           ctxo.events_count.push(e.count);
           ctxo.events_color.push(colorHash.hex(e.topic_0))
-          console.log(days)
-          console.log(e.topic_0)
-
-          console.log(days[e.topic_0]);
+          ctxo.events.push({
+            name: e.name,
+            topic_0: e.topic_0,
+            count: e.count,
+            color: colorHash.hex(e.topic_0),
+            index: i++,
+            visible: true,
+          })
           datasets.push({
             label: e.name,
             backgroundColor: colorHash.hex(e.topic_0),
@@ -88,9 +107,13 @@ parasails.registerPage('contracts-page-events', {
 
           // Configuration options go here
           options: {
+            aspectRatio: 3.5,
             tooltips: {
               mode: 'index',
               intersect: false,
+            },
+            legend: {
+              display: false
             },
             scales: {
               xAxes: [{
@@ -107,7 +130,11 @@ parasails.registerPage('contracts-page-events', {
         ctxo.c_distribution = new Chart(c_distribution, {
           // The type of chart we want to create
           type: 'doughnut',
-
+          options: {
+            legend: {
+              display: false
+            },
+          },
           // The data for our dataset
           data: {
             labels: ctxo.events_name,

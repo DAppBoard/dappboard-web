@@ -4,9 +4,9 @@ connection: {
   host: process.env.DAPPBOARD_PSQL_HOST,
   database: process.env.DAPPBOARD_PSQL_DB,
   password: process.env.DAPPBOARD_PSQL_PASSWORD,
-  port: 25060,
+  port: 25061,
   ssl: true,
-  max: 3,
+  max: 100,
 }});
 const setupPaginator = require('knex-paginator');
 setupPaginator(knex);

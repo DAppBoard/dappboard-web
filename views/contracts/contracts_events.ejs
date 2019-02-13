@@ -1,39 +1,74 @@
 <div id="contracts-page-events" class="columns" id="contracts-token" style="margin-bottom: 0;">
-  <div class="column is-2 sidemenu_container" style="padding-right:0;" >
+  <div class="column is-2 sidemenu_container" style="padding-right:0;">
     <%- include('menu'); %>
   </div>
   <div class="column is-10 general_background_normal ">
     <div class="box" style="margin:10px;">
       <nav class="level">
-  <!-- Left side -->
-  <div class="level-left">
-    <div class="level-item">
-      <h1 class="title">Events</h1>
-    </div>
-  </div>
+        <!-- Left side -->
+        <div class="level-left">
+          <div class="level-item">
+            <h1 class="title">Events</h1>
+          </div>
+        </div>
 
-  <!-- Right side -->
-  <div class="level-right">
-    <p class="level-item">    <input type="text" id="tokendaterange" class="input" style="  float: right;"  />
-</p>
-  </div>
-</nav>
+        <!-- Right side -->
+        <div class="level-right">
+          <p class="level-item"> <input type="text" id="tokendaterange" class="input" style="  float: right;" />
+          </p>
+        </div>
+      </nav>
 
-    <hr>
-    <div class="columns">
-      <div class="column is-12">
-        <canvas id="contracts_events_timeline"></canvas>
+      <hr>
+      <div class="columns" v-if="loading">
+        <div class="column is-12">
+          <center style="margin-top: 70px; margin-bottom:70px;">
+            <div class="loader" style="margin-bottom:45px;">
+            </div>
+            <h3 class="title">Loading...</h3>
+            <p>This might take a wild.<br>If you want to get dedicated access to the data, <a href="/iwantadashboard" target="_blank">contact us</a>.</p>
+          </center>
+
+        </div>
+      </div>
+      <div v-show="!loading">
+      <div class="columns">
+        <div class="column is-12">
+          <canvas id="contracts_events_timeline"></canvas>
+        </div>
+      </div>
+      <hr>
+      <div class="columns">
+        <div class="column is-6">
+          <h4 class="title is-6">Distribution</h4>
+          <canvas id="contracts_events_donut"></canvas>
+        </div>
+        <div class="column is-6">
+          <h4 class="title is-6">Events</h4>
+            <article class="media" v-for="event in events">
+              <figure class="media-left">
+                <p class="image is-64x64" v-bind:style="{ 'background-color': event.color }" >
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>{{ event.name }}</strong><br>
+                    <small>0x{{ event.topic_0 }}</small>
+                    </p>
+                </div>
+              </div>
+              <div class="media-right">
+                <i class="fas fa-eye has-text-info " style="cursor:pointer;" v-if="event.visible" v-on:click="toggle(event.index)"></i>
+                <i class="fas fa-eye-slash" v-if="!event.visible" style="cursor:pointer;" v-on:click="toggle(event.index)"></i>
+              </div>
+            </article>
+            <hr>
+            <i>* The hash is the log topic associated to the event. Every event has a different hash depending on its name and the parameters it accepts.</i>
+        </div>
       </div>
     </div>
-    <hr>
-    <div class="columns">
-      <div class="column is-6">
-        <h4 class="title is-6">Distribution</h4>
-        <canvas id="contracts_events_donut"></canvas>
-      </div>
     </div>
-
-</div>
   </div>
 </div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
